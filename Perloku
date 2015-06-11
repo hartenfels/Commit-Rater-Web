@@ -1,0 +1,2 @@
+#!/bin/sh
+./cr-web daemon --listen http://*:$PORT --mode production
