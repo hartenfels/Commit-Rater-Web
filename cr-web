@@ -5,6 +5,7 @@ use Mojo::Util            qw(slurp);
 use Data::Dumper;
 use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
+use IO::Socket::SSL;
 
 
 #plugin Minion => {File => 'minion.db'};
