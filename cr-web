@@ -2,6 +2,7 @@
 use Mojolicious::Lite;
 use Mojo::JSON            qw(decode_json);
 use Mojo::Util            qw(slurp);
+use Data::Dumper;
 use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
 
@@ -28,7 +29,7 @@ get '/repo/:user/:repo' => sub
     $c->ua->head("https://github.com/$user/$repo/" => sub
     {
         my ($ua, $tx) = @_;
-        return $c->render(status => $tx->res->code) if not $tx->success;
+        return $c->render(text => Dumper($tx->res), status => $tx->res->code) if not $tx->success;
 
         my $file = catfile data => "$user.$repo.json";
         my $data = eval { slurp $file } or do
