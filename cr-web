@@ -6,14 +6,18 @@ use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
 
 
-#plugin Minion => {File => 'minion.db'};
+plugin Minion => {File => 'minion.db'};
 
-#app->minion->add_task(rate_commits => sub
-#{
-#    my ($job, $args) = @_;
-#    return if -e $args->{output};
-#    system make => data => pairmap { "$a=$b" } %$args;
-#});
+app->minion->add_task(rate_commits => sub
+{
+    my ($job, $args) = @_;
+    return if -e $args->{output};
+    # system make => data => pairmap { "$a=$b" } %$args;
+    open my $fh, '>', $args->{output}
+        or die "Couldn't write to $args->{output}: $!\n";
+    print {$fh} pairmap { "$a=$b\n" } %$args;
+    close $fh or die "Couldn't close $args->{output}: $!\n";
+});
 
 
 get '/' => sub { shift->render(template => 'index') };
@@ -33,11 +37,11 @@ get '/repo/:user/:repo' => sub
         my $file = catfile data => "$user.$repo.json";
         my $data = eval { slurp $file } or do
         {
-#            $c->minion->enqueue(rate_commits => [{
-#                user   => $user,
-#                repo   => $repo,
-#                output => $file,
-#            }]);
+            $c->minion->enqueue(rate_commits => [{
+                user   => $user,
+                repo   => $repo,
+                output => $file,
+            }]);
             $c->title("$user/$repo", code => "Repo won't be fetched");
             return $c->render(template => 'repo');
         };

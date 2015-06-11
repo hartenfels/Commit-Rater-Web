@@ -1,2 +1,4 @@
 #!/bin/sh
+mkdir -p data
+./cr-web minion worker -j 1 --mode production &
 ./cr-web daemon --listen http://*:$PORT --mode production
