@@ -1,0 +1,8 @@
+% layout 'default';
+% title 'Commit Rater';
+
+%= t div => (class => 'jumbotron') => begin
+    %= t div => (class => 'container') => begin
+        %= t h1 => 'Commit Rater'
+    %= end
+%= end

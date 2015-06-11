@@ -1,0 +1,51 @@
+#!/usr/bin/env perl
+use Mojolicious::Lite;
+use Mojo::JSON            qw(decode_json);
+use Mojo::Util            qw(slurp);
+use File::Spec::Functions qw(catfile);
+use List::Util            qw(pairmap);
+
+
+#plugin Minion => {File => 'minion.db'};
+
+#app->minion->add_task(rate_commits => sub
+#{
+#    my ($job, $args) = @_;
+#    return if -e $args->{output};
+#    system make => data => pairmap { "$a=$b" } %$args;
+#});
+
+
+get '/' => sub { shift->render(template => 'index') };
+
+
+get '/repo/:user/:repo' => sub
+{
+    my $c = shift;
+    my ($user, $repo) = @{$c->stash}{'user', 'repo'};
+    $c->render_later;
+
+    $c->ua->head("https://github.com/$user/$repo/" => sub
+    {
+        my ($ua, $tx) = @_;
+        return $c->render(status => $tx->res->code) if not $tx->success;
+
+        my $file = catfile data => "$user.$repo.json";
+        my $data = eval { slurp $file } or do
+        {
+#            $c->minion->enqueue(rate_commits => [{
+#                user   => $user,
+#                repo   => $repo,
+#                output => $file,
+#            }]);
+            $c->title("$user/$repo", code => "Repo will be fetched");
+            return $c->render(template => 'repo');
+        };
+
+        $c->title("$user/$repo", code => $data);
+        $c->render(template => 'repo');
+    });
+};
+
+
+app->start;

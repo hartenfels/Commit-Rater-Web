@@ -1,0 +1,6 @@
+% layout 'default';
+
+%= t div => (class => 'container') => begin
+    %= t h1 => title
+    %= t pre => $code
+%= end
