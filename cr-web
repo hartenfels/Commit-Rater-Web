@@ -26,7 +26,7 @@ get '/repo/:user/:repo' => sub
     my ($user, $repo) = @{$c->stash}{'user', 'repo'};
     $c->render_later;
 
-    $c->ua->head("http://github.com/$user/$repo/" => sub
+    $c->ua->head("https://github.com/$user/$repo/" => sub
     {
         my ($ua, $tx) = @_;
         return $c->render(text => Dumper($tx->res), status => $tx->res->code) if not $tx->success;
