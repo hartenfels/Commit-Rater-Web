@@ -249,6 +249,16 @@ DISTRIBUTIONS
       Pod::Simple 3.09
       Time::Local 1.2
       perl 5.010001
+  Scalar-List-Utils-1.42
+    pathname: P/PE/PEVANS/Scalar-List-Utils-1.42.tar.gz
+    provides:
+      List::Util 1.42
+      List::Util::XS 1.42
+      Scalar::Util 1.42
+      Sub::Util 1.42
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   Sub-Uplevel-0.25
     pathname: D/DA/DAGOLDEN/Sub-Uplevel-0.25.tar.gz
     provides:
