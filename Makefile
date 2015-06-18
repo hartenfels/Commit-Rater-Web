@@ -35,4 +35,11 @@ pull: Commit-Rater
 	cd Commit-Rater; git pull; carton install
 
 
+clean:
+	rm -rf data minion.db
+
+realclean: clean
+	rm -rf local CommitRater
+
+
 .PHONY: all install run-dev pull
