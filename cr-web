@@ -12,7 +12,7 @@ app->minion->add_task(rate_commits => sub
 {
     my ($job, $args) = @_;
     return if -e $args->{output};
-    system make => data => pairmap { "$a=$b" } %$args;
+    system qw(make -s data), pairmap { "$a=$b" } %$args;
 });
 
 
