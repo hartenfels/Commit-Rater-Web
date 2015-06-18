@@ -1,3 +1,4 @@
 [submodule "Commit-Rater"]
 	path = Commit-Rater
 	url = https://github.com/hartenfels/Commit-Rater.git
+	branch = master
