@@ -12,11 +12,7 @@ app->minion->add_task(rate_commits => sub
 {
     my ($job, $args) = @_;
     return if -e $args->{output};
-    # system make => data => pairmap { "$a=$b" } %$args;
-    open my $fh, '>', $args->{output}
-        or die "Couldn't write to $args->{output}: $!\n";
-    print {$fh} pairmap { "$a=$b\n" } %$args;
-    close $fh or die "Couldn't close $args->{output}: $!\n";
+    system make => data => pairmap { "$a=$b" } %$args;
 });
 
 
@@ -42,7 +38,7 @@ get '/repo/:user/:repo' => sub
                 repo   => $repo,
                 output => $file,
             }]);
-            $c->title("$user/$repo", code => "Repo won't be fetched");
+            $c->title("$user/$repo", code => "Repo will be fetched");
             return $c->render(template => 'repo');
         };
 
