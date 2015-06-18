@@ -21,8 +21,12 @@ stop-production:
 data: pull
 	mkdir -p data
 	: $${user?} $${repo?} $${output?}
-	Commit-Rater/run "https://github.com/$$user/$$repo.git" > tmp.json
-	cp tmp.json "$$output"
+	tmp=`mktemp` \
+	&& cd Commit-Rater \
+	&& carton exec ./commit-rater -r "https://github.com/$$user/$$repo.git" \
+	                                  > "$$tmp" \
+	&& cd .. \
+	&& cp "$$tmp" "$$output"
 
 
 local: cpanfile
