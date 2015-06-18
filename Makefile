@@ -18,12 +18,12 @@ stop-production:
 	carton exec -- hypnotoad -s cr-web
 
 
-data: pull
-	mkdir -p data
+stats: pull
+	mkdir -p stats
 	: $${user?} $${repo?} $${output?}
 	tmp=`mktemp` \
 	&& cd Commit-Rater \
-	&& carton exec ./commit-rater -r "https://github.com/$$user/$$repo.git" \
+	&& carton exec ./commit-rater -r "https://git::@github.com/$$user/$$repo.git" \
 	                                  > "$$tmp" \
 	&& cd .. \
 	&& cp "$$tmp" "$$output"
@@ -36,11 +36,11 @@ Commit-Rater:
 	git clone https://github.com/hartenfels/Commit-Rater.git
 
 pull: Commit-Rater
-	cd Commit-Rater; git pull; carton install
+	cd Commit-Rater; git pull; make install
 
 
 clean:
-	rm -rf data minion.db
+	rm -rf stats minion.db
 
 realclean: clean
 	rm -rf local CommitRater

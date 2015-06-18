@@ -1,28 +1,25 @@
 # Commit Rater Web
-A website that shows the results of our [Commit Rater](https://github.com/hartenfels/Commit-Rater). Backend uses Mojolicious, frontend uses Embedded Perl and AngularJS.
+A website that shows the results of our [Commit Rater](https://github.com/hartenfels/Commit-Rater). Backend uses Mojolicious, frontend uses AngularJS.
 
 ## Routes
-We will call all the analysis data and rating and stuff of a developer just *data* in the following.
+We will call all the analysis data and rating and stuff of a developer just *stats* in the following.
 
-```
-GET /res?:size&:page # Get data on a page of the global "leaderboard"
-GET /res/repo/:user/:repo/ # Get data for all devs from Github repo :user/:repo
-GET /res/repo/:repo/devs/:dev/ # Get data for :dev in :repo
-GET /res/averages # Global averages for all analysis fields (?)
-```
+### `GET /res/repo/:user/:repo`
+
+Poll the status of `:user`'s Github repo `:repo`. Returns a status of `200` if the repo has been rated, `202` if it's still in the process of being rated and forwards whatever errors were encountered from Github.
 
 ## Views
 
 ```
 GET /?:size&:page # View a page of the global "leaderboard"
 GET /repo/:user/:repo/ # View repo-leaderboard
-GET /repo/:repo/devs/:dev/ # View detailed data for :dev in :repo
+GET /repo/:repo/devs/:dev/ # View detailed stats for :dev in :repo
 ```
 
 Leaderboards only compare analysis fields that are factored into the rating and the rating itself. Clicking on a dev in a leaderboard shows the page with a detailed analysis, including unrated analysis fields, comparisons with the global average for some fields and suggestions for improvement.
 
 ## Data
-A developers data might look like this:
+A developers stats might look like this:
 
 ```JSON
 {

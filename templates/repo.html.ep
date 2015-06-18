@@ -2,5 +2,5 @@
 
 %= t div => (class => 'container') => begin
     %= t h1 => title
-    %= t pre => $code
+    %= t pre => dumper($stats)
 %= end

@@ -12,8 +12,28 @@ app->minion->add_task(rate_commits => sub
 {
     my ($job, $args) = @_;
     return if -e $args->{output};
-    system qw(make -s data), pairmap { "$a=$b" } %$args;
+    system qw(make -s stats), pairmap { "$a=$b" } %$args;
 });
+
+
+sub load_stats
+{
+    my ($c, $user, $repo) = @_;
+
+    my $file  = catfile 'stats', "$user.$repo.json";
+    my $stats = eval { decode_json slurp $file };
+
+    if (!$stats)
+    {
+        $c->minion->enqueue(rate_commits => [{
+            user   => $user,
+            repo   => $repo,
+            output => $file,
+        }]);
+    }
+
+    return $stats;
+}
 
 
 get '/' => sub { shift->render(template => 'index') };
@@ -30,20 +50,37 @@ get '/repo/:user/:repo' => sub
         my ($ua, $tx) = @_;
         return $c->render(status => $tx->res->code) if not $tx->success;
 
-        my $file = catfile data => "$user.$repo.json";
-        my $data = eval { slurp $file } or do
-        {
-            $c->minion->enqueue(rate_commits => [{
-                user   => $user,
-                repo   => $repo,
-                output => $file,
-            }]);
-            $c->title("$user/$repo", code => "Repo will be fetched");
-            return $c->render(template => 'repo');
-        };
-
-        $c->title("$user/$repo", code => $data);
+        $c->title("$user/$repo",
+            user  => $user,
+            repo  => $repo,
+            stats => load_stats($c, $user, $repo),
+        );
         $c->render(template => 'repo');
+    });
+};
+
+
+get '/res/repo/:user/:repo' => sub
+{
+    my $c = shift;
+    my ($user, $repo) = @{$c->stash}{'user', 'repo'};
+    $c->render_later;
+
+    $c->ua->head("https://github.com/$user/$repo/" => sub
+    {
+        my ($ua, $tx) = @_;
+        if (!$tx->success)
+        {
+            return $c->render(
+                text   => 'Error from Github: ' . $tx->res->code,
+                status => $tx->res->code,
+            );
+        }
+
+        if (load_stats($c, $user, $repo))
+        {   $c->render(text => 'OK') }
+        else
+        {   $c->render(text => 'Fetching', status => 202) }
     });
 };
 
