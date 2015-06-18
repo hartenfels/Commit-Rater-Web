@@ -1,7 +1,7 @@
 all:
 	@echo Nothing to do for all
 
-install: Commit-Rater local
+install: Commit-Rater/local local
 
 
 run-dev: local
@@ -32,18 +32,18 @@ stats: pull
 local: cpanfile
 	carton install
 
-Commit-Rater:
-	git clone https://github.com/hartenfels/Commit-Rater.git
-
-pull: Commit-Rater
-	cd Commit-Rater; git pull; make install
+Commit-Rater/local:
+	git submodule update --init --remote
+	cd Commit-Rater; make install
 
 
 clean:
 	rm -rf stats minion.db
+	cd Commit-Rater; make clean
 
 realclean: clean
-	rm -rf local CommitRater
+	rm -rf local
+	cd Commit-Rater; make realclean
 
 
 .PHONY: all install run-dev pull
