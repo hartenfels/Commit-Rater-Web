@@ -6,8 +6,8 @@ We will call all the analysis data and rating and stuff of a developer just *dat
 
 ```
 GET /res?:size&:page # Get data on a page of the global "leaderboard"
-GET /res/repos/:user/:repo/ # Get data for all devs from Github repo :user/:repo
-GET /res/repos/:repo/devs/:dev/ # Get data for :dev in :repo
+GET /res/repo/:user/:repo/ # Get data for all devs from Github repo :user/:repo
+GET /res/repo/:repo/devs/:dev/ # Get data for :dev in :repo
 GET /res/averages # Global averages for all analysis fields (?)
 ```
 
@@ -15,8 +15,8 @@ GET /res/averages # Global averages for all analysis fields (?)
 
 ```
 GET /?:size&:page # View a page of the global "leaderboard"
-GET /repos/:user/:repo/ # View repo-leaderboard
-GET /repos/:repo/devs/:dev/ # View detailed data for :dev in :repo
+GET /repo/:user/:repo/ # View repo-leaderboard
+GET /repo/:repo/devs/:dev/ # View detailed data for :dev in :repo
 ```
 
 Leaderboards only compare analysis fields that are factored into the rating and the rating itself. Clicking on a dev in a leaderboard shows the page with a detailed analysis, including unrated analysis fields, comparisons with the global average for some fields and suggestions for improvement.
