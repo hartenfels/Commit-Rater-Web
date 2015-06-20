@@ -21,14 +21,15 @@
 </section>
 
 <section class="search-repositories">
-  <form>
+  <!-- Lol JavaScript -->
+  <form onsubmit="location.href='/repo/' + document.getElementById('repo-input').value; return false;">
     <div class="row">
       <h2>Rate a repository:</h2>
       <br/>
       <div class="large-12 columns">
         <div class="row collapse">
           <div class="small-10 columns">
-            <input type="text" placeholder="Hex Value">
+            <input type="text" placeholder="username/reponame" id="repo-input">
           </div>
           <div class="small-2 columns">
             <input type="submit" class="button postfix" value="Go"/>
