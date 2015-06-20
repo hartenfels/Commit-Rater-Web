@@ -74,5 +74,30 @@
 
   % } else {
     The worker is doing its thing. Respect the thing.
+    <script type="text/javascript">
+      var parts = window.location.pathname.split('/');
+      var repo = parts[parts.length - 1] + "/" + parts[parts.length - 2];
+
+      function poll() {
+        console.log("bump");
+        $.ajax("/res/repo/" + repo, {
+          type: "GET",
+          statusCode: {
+            200: function (response) {
+              console.log("Worker job done. Reloading.");
+              console.log(data);
+              location.reload();
+            },
+            202: function (response) {
+              console.log("Worker still busy. Trying again in 1000 ms");
+              console.log(data);
+              setTimeout(poll, 1000);
+            }
+          }
+        });
+      }
+
+      poll();
+    </script>
   % }
 </div>

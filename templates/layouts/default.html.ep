@@ -4,19 +4,17 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- If you delete this meta tag World War Z will become a reality -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
 
-  <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
 
-  <!-- If you are using the gem version, you need this only -->
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="/css/app.css">
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/modernizr.js"></script>
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/jquery.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
 </head>
 <body>
 
@@ -53,8 +51,6 @@
   %= content
 
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/jquery.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
   <script>
     $(document).foundation();
   </script>
