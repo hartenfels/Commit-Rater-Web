@@ -22,7 +22,7 @@
           % while (my ($email, $author) = each %$stats) {
             <tr>
               %= t td => $email
-              %= t td => ('data-tooltip', 'aria-haspopup' => "true", class => "has-tip", title => "0/0/0") => $author->{empty_second_line}{pass}
+              %= t td => ('data-tooltip' => undef, 'aria-haspopup' => "true", class => "has-tip", title => "0/0/0") => $author->{empty_second_line}{pass}
               %= t td => $author->{subject_limit}{pass}
               %= t td => $author->{capitalize_subject}{pass}
               %= t td => $author->{no_period_subject}{pass}
