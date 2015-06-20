@@ -1,6 +1,6 @@
 $script = <<SCRIPT
 sudo apt-get update
-sudo apt-get install -y carton perl-doc git openssl
+sudo apt-get install -y carton perl-doc git libssl-dev
 git config --global user.name "vagrant"
 git config --global user.email "vagrant@vagrant.vg"
 cd /vagrant
