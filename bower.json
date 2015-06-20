@@ -1,0 +1,12 @@
+{
+  "name": "Commit-Rater-Web",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hartenfels/Commit-Rater-Web",
+  "authors": [
+    "hartenfels",
+    "turbopope"
+  ],
+  "description": "The best commit rating system in the multiverse.",
+  "license": "MIT",
+  "private": true
+}
