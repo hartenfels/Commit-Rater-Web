@@ -14,8 +14,27 @@
       <h1>Commit Rater</h1>
       <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, this hero unit is totally not stolen from Foundation's website. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h4>
     </div>
-    <div class="medium-4 columns">
+    <div class="medium-4 columns hide-for-small">
       <img src="//avatars3.githubusercontent.com/u/3341028"/>
     </div>
   </div>
+</section>
+
+<section class="search-repositories">
+  <form>
+    <div class="row">
+      <h2>Rate a repository:</h2>
+      <br/>
+      <div class="large-12 columns">
+        <div class="row collapse">
+          <div class="small-10 columns">
+            <input type="text" placeholder="Hex Value">
+          </div>
+          <div class="small-2 columns">
+            <input type="submit" class="button postfix" value="Go"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>
