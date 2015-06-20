@@ -1,0 +1,30 @@
+#responsive-gallery-large-marquee {
+  height: 280px;
+  padding: 40px 5px 30px 5px;
+  z-index: 50;
+  overflow: visible;
+  margin-bottom: 5rem;
+  text-align: left;
+  position: relative;
+  background: url(http://foundation.zurb.com/assets/img/marquee-stars.svg) #074e68;
+}
+
+#responsive-gallery-large-marquee h1 {
+  color: #fff;
+  margin-bottom: 0;
+  line-height: 100%;
+  font-size: 35px;
+}
+
+#responsive-gallery-large-marquee h4 {
+  color: #fff;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+#responsive-gallery-large-marquee .imageoverlay {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  z-index: -1;
+}

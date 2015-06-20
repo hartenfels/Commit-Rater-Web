@@ -1,9 +1,21 @@
 % layout 'default';
 % title 'Commit Rater';
 
-<div class='jumbotron'>
-    <div class='container'>
-        <h1>Commit Rater</h1>
-        <span class="lead">This is a very cool project</span>
+<section id="responsive-gallery-large-marquee">
+  <!--
+  <div class="row">
+    <div class="small-12 columns imageoverlay hide-for-small">
+      <img class="animated fadeInUp" src="//foundation.zurb.com/assets/img/learn/website-examples/floating-devices.svg"/>
     </div>
-</div>
+  </div>
+  -->
+  <div class="row">
+    <div class="medium-8 columns">
+      <h1>Commit Rater</h1>
+      <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, this hero unit is totally not stolen from Foundation's website. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h4>
+    </div>
+    <div class="medium-4 columns">
+      <img src="//avatars3.githubusercontent.com/u/3341028"/>
+    </div>
+  </div>
+</section>
