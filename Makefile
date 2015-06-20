@@ -1,10 +1,10 @@
 all:
 	@echo Nothing to do for all
 
-install: Commit-Rater/local local
+install: bower_components local Commit-Rater/local
 
 
-run-dev: local
+run-dev: bower_components local
 	carton exec -- morbo cr-web
 
 worker-dev: local pull
@@ -29,8 +29,13 @@ stats: pull
 	&& cp "$$tmp" "$$output"
 
 
+bower_components: bower.json
+	bower install
+	touch bower_components
+
 local: cpanfile
 	carton install
+	touch local
 
 Commit-Rater/local:
 	git submodule update --init --remote
