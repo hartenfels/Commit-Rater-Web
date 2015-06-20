@@ -28,3 +28,13 @@
   left: 0;
   z-index: -1;
 }
+
+#pb {
+  font-size: 80%;
+  padding-left: 8px;
+  color: #fff;
+}
+
+.secondary #pb {
+  color: #222;
+}

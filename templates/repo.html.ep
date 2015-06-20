@@ -74,29 +74,40 @@
 
   % } else {
     The worker is doing its thing. Respect the thing.
+    <div id="pbw" class="progress">
+      <span id="pb" class="meter custom" style="width: 0%"></span>
+    </div>
     <script type="text/javascript">
       var parts = window.location.pathname.split('/');
-      var repo = parts[parts.length - 1] + "/" + parts[parts.length - 2];
+      var repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
 
       function poll() {
         console.log("bump");
+
+        $("#pbw").toggleClass("secondary");
+        $("#pb").text("checking");
+
         $.ajax("/res/repo/" + repo, {
           type: "GET",
           statusCode: {
-            200: function (response) {
+            200: function(data) {
               console.log("Worker job done. Reloading.");
               console.log(data);
               location.reload();
             },
-            202: function (response) {
-              console.log("Worker still busy. Trying again in 1000 ms");
+            202: function(data) {
+              console.log("Worker still busy. Trying again in 2500 ms");
               console.log(data);
-              setTimeout(poll, 1000);
+              setTimeout(poll, 2500);
+
+              $("#pbw").toggleClass("secondary");
+              $("#pb").css("width", "0%");
+              $("#pb").text("waiting");
+              $("#pb").animate({width:"100%"}, 2500, "linear");
             }
           }
         });
       }
-
       poll();
     </script>
   % }
