@@ -2,3 +2,4 @@ local
 stats
 minion.db
 .idea/
+.vagrant/
