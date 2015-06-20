@@ -1,8 +1,9 @@
 % layout 'default';
 % title 'Commit Rater';
 
-%= t div => (class => 'jumbotron') => begin
-    %= t div => (class => 'container') => begin
-        %= t h1 => 'Commit Rater'
-    %= end
-%= end
+<div class='jumbotron'>
+    <div class='container'>
+        <h1>Commit Rater</h1>
+        <span class="lead">This is a very cool project</span>
+    </div>
+</div>
