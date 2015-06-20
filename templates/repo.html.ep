@@ -1,6 +1,40 @@
 % layout 'default';
 
-%= t div => (class => 'container') => begin
-    %= t h1 => title
-    %= t pre => dumper($stats)
-%= end
+
+<div class="row">
+  %= t h1 => title
+  <span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span>
+  % if (defined $stats) {
+      <table role="data">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Empty second line</th>
+            <th>Subject limit</th>
+            <th>Subject capitalized</th>
+            <th>Subject no period</th>
+            <th>Subject in imperative</th>
+            <th>Body used</th>
+            <th>Body limit</th>
+          </tr>
+        </thead>
+        <tbody>
+          % while (my ($email, $author) = each %$stats) {
+            <tr>
+              %= t td => $email
+              %= t td => ('data-tooltip', 'aria-haspopup' => "true", class => "has-tip", title => "0/0/0") => $author->{empty_second_line}{pass}
+              %= t td => $author->{subject_limit}{pass}
+              %= t td => $author->{capitalize_subject}{pass}
+              %= t td => $author->{no_period_subject}{pass}
+              %= t td => $author->{imperative_subject}{pass}
+              %= t td => $author->{body_used}{pass}
+              %= t td => $author->{body_limit}{pass}
+            </tr>
+          % }
+        </tbody>
+      </table>
+
+  % } else {
+    The worker is doing it's thing. Respect the thing.
+  % }
+</div>
