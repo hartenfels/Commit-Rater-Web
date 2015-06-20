@@ -23,6 +23,20 @@ DISTRIBUTIONS
       strict 0
       version 0.88
       warnings 0
+  CPAN-Meta-YAML-0.016
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-YAML-0.016.tar.gz
+    provides:
+      CPAN::Meta::YAML 0.016
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      Scalar::Util 0
+      perl 5.008001
+      strict 0
+      warnings 0
   DBM-Deep-2.0011
     pathname: R/RK/RKINYON/DBM-Deep-2.0011.tar.gz
     provides:
@@ -64,6 +78,14 @@ DISTRIBUTIONS
       Test::More 0.88
       Test::Warn 0.08
       perl 5.008_004
+  IO-Socket-IP-0.37
+    pathname: P/PE/PEVANS/IO-Socket-IP-0.37.tar.gz
+    provides:
+      IO::Socket::IP 0.37
+    requirements:
+      IO::Socket 0
+      Socket 1.97
+      Test::More 0.88
   IO-Socket-SSL-2.016
     pathname: S/SU/SULLR/IO-Socket-SSL-2.016.tar.gz
     provides:
@@ -78,6 +100,7 @@ DISTRIBUTIONS
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
+      Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
   Minion-1.15
@@ -98,7 +121,6 @@ DISTRIBUTIONS
       DBM::Deep 2.0011
       ExtUtils::MakeMaker 0
       Mojolicious 6.0
-      perl 5.010001
   Module-Build-0.4212
     pathname: L/LE/LEONT/Module-Build-0.4212.tar.gz
     provides:
@@ -223,7 +245,7 @@ DISTRIBUTIONS
       Mojolicious::Command::generate::app undef
       Mojolicious::Command::generate::lite_app undef
       Mojolicious::Command::generate::makefile undef
-      Mojolicious::Command::generate::plugin undef
+      Mojolicious::Command::generate::plugin 0.01
       Mojolicious::Command::get undef
       Mojolicious::Command::inflate undef
       Mojolicious::Command::prefork undef
@@ -264,7 +286,14 @@ DISTRIBUTIONS
       IO::Socket::IP 0.26
       Pod::Simple 3.09
       Time::Local 1.2
-      perl 5.010001
+  Mozilla-CA-20141217
+    pathname: A/AB/ABH/Mozilla-CA-20141217.tar.gz
+    provides:
+      Mozilla::CA 20141217
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test 0
+      perl 5.006
   Net-SSLeay-1.69
     pathname: M/MI/MIKEM/Net-SSLeay-1.69.tar.gz
     provides:
@@ -275,6 +304,20 @@ DISTRIBUTIONS
       MIME::Base64 0
       Test::More 0.60_01
       perl 5.005
+  Parse-CPAN-Meta-1.4417
+    pathname: D/DA/DAGOLDEN/Parse-CPAN-Meta-1.4417.tar.gz
+    provides:
+      Parse::CPAN::Meta 1.4417
+    requirements:
+      CPAN::Meta::YAML 0.011
+      Carp 0
+      Encode 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      File::Spec 0.80
+      JSON::PP 2.27200
+      perl 5.008001
+      strict 0
   Scalar-List-Utils-1.42
     pathname: P/PE/PEVANS/Scalar-List-Utils-1.42.tar.gz
     provides:
