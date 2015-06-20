@@ -56,32 +56,17 @@
         <tbody>
           % while (my ($email, $author) = each %$stats) {
             % my $count = $author->{empty_second_line}{pass} + $author->{empty_second_line}{fail} + $author->{empty_second_line}{undef};
+            % continue if $count == 0;
             <tr>
               %= t td => $email
-
               %= t td => $count
-
-              % my $subject_limit_percent = $author->{subject_limit}{pass} / $count * 100;
-              %= t td => sprintf '%.2f%', $subject_limit_percent
-
-              % my $capitalize_subject_percent = $author->{capitalize_subject}{pass} / $count * 100;
-              %= t td => sprintf '%.2f%', $capitalize_subject_percent
-
-              % my $no_period_subject_percent = $author->{no_period_subject}{pass} / $count * 100;
-              %= t td => sprintf '%.2f%', $no_period_subject_percent
-
-              % my $imperative_subject_percent = $author->{imperative_subject}{pass} / $count * 100;
-              %= t td => sprintf '%.2f%', $imperative_subject_percent
-
-              % my $body_used_percent = $author->{body_used}{pass} / $count * 100;
-              %= t td => sprintf '%.2f%', $body_used_percent
-
-              % my $body_limit_percent = $author->{body_limit}{pass} / $author->{body_used}{pass}  * 100;
-              %= t td => sprintf '%.2f%', $body_limit_percent
-
-              % my $empty_second_line_percent = $author->{empty_second_line}{pass} / $author->{body_used}{pass}  * 100;
-              % my $test = join '/', @{$author->{empty_second_line}}{qw(pass fail undef)};
-              %= t td => ('data-tooltip' => undef, 'aria-haspopup' => "true", class => "has-tip", title => $test) => sprintf '%.2f%', $body_limit_percent
+              %= t td => sprintf '%.2f%%', $author->{subject_limit}{pass} / $count * 100
+              %= t td => sprintf '%.2f%%', $author->{capitalize_subject}{pass} / $count * 100
+              %= t td => sprintf '%.2f%%', $author->{no_period_subject}{pass} / $count * 100
+              %= t td => sprintf '%.2f%%', $author->{imperative_subject}{pass} / $count * 100
+              %= t td => sprintf '%.2f%%', $author->{body_used}{pass} / $count * 100
+              %= t(td => eval { sprintf '%.2f%%', $author->{body_limit}{pass} / $author->{body_used}{pass} * 100 } // '-')
+              %= t td => eval { sprintf '%.2f%%', $author->{empty_second_line}{pass} / $author->{body_used}{pass} * 100 } // '-'
             </tr>
           % }
         </tbody>
@@ -89,6 +74,5 @@
 
   % } else {
     The worker is doing its thing. Respect the thing.
-    <!-- Poll for worker finishing his job here -->
   % }
 </div>
