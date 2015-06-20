@@ -39,18 +39,18 @@
       </table>
 
       <h4>Percentages<h4>
-      <table role="data">
+      <table role="data" class="sortable">
         <thead>
           <tr>
             <th>Author</th>
             <th>Commits</th>
-            <th>Subject limit</th>
+            <th>Subject limited</th>
             <th>Subject capitalized</th>
             <th>Subject no period</th>
-            <th>Subject in imperative</th>
+            <th>Subject imperative</th>
             <th>Body used</th>
-            <th>Body limit</th>
-            <th>Empty second line</th>
+            <th>Body limited</th>
+            <th>Body separated</th>
           </tr>
         </thead>
         <tbody>
@@ -60,13 +60,35 @@
             <tr>
               %= t td => $email
               %= t td => $count
-              %= t td => sprintf '%.2f%%', $author->{subject_limit}{pass} / $count * 100
-              %= t td => sprintf '%.2f%%', $author->{capitalize_subject}{pass} / $count * 100
-              %= t td => sprintf '%.2f%%', $author->{no_period_subject}{pass} / $count * 100
-              %= t td => sprintf '%.2f%%', $author->{imperative_subject}{pass} / $count * 100
-              %= t td => sprintf '%.2f%%', $author->{body_used}{pass} / $count * 100
-              %= t(td => eval { sprintf '%.2f%%', $author->{body_limit}{pass} / $author->{body_used}{pass} * 100 } // '-')
-              %= t td => eval { sprintf '%.2f%%', $author->{empty_second_line}{pass} / $author->{body_used}{pass} * 100 } // '-'
+
+              % my $subject_limit = $author->{subject_limit}{pass} / $count * 100;
+              %= t td => ('data-value' => $subject_limit) => sprintf '%.2f%%', $subject_limit
+
+              % my $capitalize_subject = $author->{capitalize_subject}{pass} / $count * 100;
+              %= t td => ('data-value' => $capitalize_subject) => sprintf '%.2f%%', $capitalize_subject
+
+              % my $no_period_subject = $author->{no_period_subject}{pass} / $count * 100;
+              %= t td => ('data-value' => $no_period_subject) => sprintf '%.2f%%', $no_period_subject
+
+              % my $imperative_subject = $author->{imperative_subject}{pass} / $count * 100;
+              %= t td => ('data-value' => $imperative_subject) => sprintf '%.2f%%', $imperative_subject
+
+              % my $body_used = $author->{body_used}{pass} / $count * 100;
+              %= t td => ('data-value' => $body_used) => sprintf '%.2f%%', $body_used
+
+              % if ($author->{body_used}{pass} > 0) {
+                % my $body_limit = $author->{body_limit}{pass} / $author->{body_used}{pass} * 100;
+                %= t td => ('data-value' => $body_limit) => sprintf '%.2f%%', $body_limit
+              % } else {
+                %= t td => ('data-value' => -1)  => '-'
+              % }
+
+              % if ($author->{body_used}{pass} > 0) {
+                % my $empty_second_line = $author->{empty_second_line}{pass} / $author->{body_used}{pass} * 100;
+                %= t td => ('data-value' => $empty_second_line) => sprintf '%.2f%%', $empty_second_line
+              % } else {
+                %= t td => ('data-value' => -1)  => '-'
+              % }
             </tr>
           % }
         </tbody>
