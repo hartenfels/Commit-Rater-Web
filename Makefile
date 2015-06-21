@@ -1,10 +1,10 @@
 all:
 	@echo Nothing to do for all
 
-install: bower_components local Commit-Rater/local
+install: public/components local Commit-Rater/local
 
 
-run-dev: bower_components local
+run-dev: public/components local
 	carton exec -- morbo cr-web
 
 worker-dev: local pull
@@ -29,8 +29,9 @@ stats: pull
 	&& cp "$$tmp" "$$output"
 
 
-bower_components: bower.json
+public/components: bower.json .bowerrc
 	bower install
+	touch public/components
 
 local: cpanfile
 	carton install
