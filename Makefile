@@ -31,7 +31,6 @@ stats: pull
 
 bower_components: bower.json
 	bower install
-	touch bower_components
 
 local: cpanfile
 	carton install

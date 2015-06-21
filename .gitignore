@@ -3,4 +3,4 @@ stats
 minion.db
 .idea/
 .vagrant/
-bower_components/
+public/components/
