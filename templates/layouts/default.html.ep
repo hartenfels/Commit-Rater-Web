@@ -18,6 +18,7 @@
   <script src="/components/foundation/js/foundation.min.js"></script>
   <script src="/components/moment/min/moment.min.js"></script>
   <script src="/components/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+  <script src="/components/Chart.js/Chart.min.js"></script>
 </head>
 <body>
 
