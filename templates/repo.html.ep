@@ -28,7 +28,7 @@
 % }
 
 <div class="row">
-  <br/>
+  <br>
   %= t h2 => title
   % if (defined $stats) {
       <script type="text/javascript">
