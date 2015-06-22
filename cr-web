@@ -3,6 +3,7 @@ use Mojolicious::Lite;
 use Mojo::JSON            qw(encode_json decode_json);
 use Mojo::Util            qw(slurp spurt);
 use Data::Dumper;
+use File::Path            qw(remove_tree);
 use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
 use Lock::File            qw(lockfile);
@@ -20,8 +21,10 @@ app->minion->add_task(rate_commits => sub
 
     if (!-e $output)
     {
-        my $stats = CommitRater->new($remote)->rate;
+        my $repo  = CommitRater::Repo->new(remote => $remote);
+        my $stats = CommitRater->new(repo => $repo)->rate;
         spurt encode_json($stats) => $output;
+        remove_tree($repo->local);
     }
 });
 
