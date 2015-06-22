@@ -105,7 +105,7 @@
                 label: "Yellow"
             }
         ]
-        var myNewChart = new Chart(ctx).Pie(data, {});
+        var myNewChart = new Chart(ctx).Pie(data, {animation : false});
       });
       </script>
 
