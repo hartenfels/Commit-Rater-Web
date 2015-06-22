@@ -133,14 +133,16 @@
               location.reload();
             },
             202: function(data) {
-              console.log("Worker still busy. Trying again in 2500 ms");
+              var delay = 30000;
+
+              console.log("Worker still busy. Trying again in " + delay + " ms");
               console.log(data);
-              setTimeout(poll, 2500);
+              setTimeout(poll, delay);
 
               $("#pbw").toggleClass("secondary");
               $("#pb").css("width", "0%");
               $("#pb").text("waiting");
-              $("#pb").animate({width:"100%"}, 2500, "linear");
+              $("#pb").animate({width:"100%"}, delay, "linear");
             }
           }
         });
