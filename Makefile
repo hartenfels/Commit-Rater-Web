@@ -34,12 +34,10 @@ Commit-Rater:
 
 
 clean:
-	rm -rf stats minion.db
-	cd Commit-Rater; make clean
+	rm -rf __repos minion.db stats
 
 realclean: clean
 	rm -rf local
-	cd Commit-Rater; make realclean
 
 
 .PHONY: all install run-dev worker-dev run-production stop-production
