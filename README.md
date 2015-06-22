@@ -21,24 +21,24 @@ Leaderboards only compare analysis fields that are factored into the rating and 
 ## Data
 A developers stats might look like this:
 
-```JSON
+```JavaScript
 {
-  name: "turbopope",
-  email: "PapstDonB@Googlemail.com",
-  commits: 42,
-  rating: 0.85,
-  analysis: {
-    empty_second_line: {
-      pass: 30,
-      fail: 2,
-      undef: 10
+  "name"     : "turbopope",
+  "email"    : "PapstDonB@Googlemail.com",
+  "commits"  : 42,
+  "rating"   : 0.85,
+  "analysis" : {
+    "empty_second_line" : {
+      "pass"  : 30,
+      "fail"  : 2,
+      "undef" : 10
     },
-    subject_limit: {
-      passed: 35,
-      failed: 7,
-      undef: 0
+    "subject_limit"     : {
+      "passed" : 35,
+      "failed" : 7,
+      "undef"  : 0
     },
-    ...
+    // ...
   }
 }
 
