@@ -39,7 +39,7 @@ sub load_stats
 {
     my ($c, $user, $repo, $no_job) = @_;
 
-    my $file  = catfile 'stats', "$user.$repo.json";
+    my $file  = catfile 'stats', lc "$user.$repo.json";
     my $stats = eval { decode_json slurp $file };
 
     if (!$stats && !$no_job)
