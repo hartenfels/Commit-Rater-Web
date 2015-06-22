@@ -33,6 +33,8 @@ local: cpanfile
 Commit-Rater:
 	git submodule update --init --remote
 
+Commit-Rater/cpanfile: Commit-Rater
+
 
 clean:
 	rm -rf __repos minion.db stats
