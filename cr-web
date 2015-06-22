@@ -35,7 +35,6 @@ sub load_stats
 
     if (!$stats && !$no_job)
     {
-        print Dumper($c->minion->backend->_jobs);
         $c->minion->enqueue(rate_commits => [
             "https://github.com/$user/$repo/",
             $file,
