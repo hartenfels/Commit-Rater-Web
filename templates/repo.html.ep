@@ -1,5 +1,31 @@
 % layout 'default';
+% use List::Util qw(sum);
 % use Mojo::JSON qw(j);
+%
+% our @RULES = qw(
+%   subject_limit
+%   capitalize_subject
+%   no_period_subject
+%   imperative_subject
+%   body_used
+%   body_limit
+%   empty_second_line
+% );
+%
+% our @TITLES = (
+%   'Subject limit',
+%   'Subject capitalized',
+%   'Subject no period',
+%   'Subject in imperative',
+%   'Body used',
+%   'Body limit',
+%   'Empty second line',
+% );
+%
+% sub get_count {
+%   my ($author) = @_;
+%   return sum @{$author->{$RULES[0]}}{qw(pass fail undef)};
+% }
 
 <div class="row">
   <br/>
@@ -8,89 +34,45 @@
       <script type="text/javascript">
         stats = <%== j($stats) %>;
       </script>
-      <h4>Absolute values<h4>
+      <h4>Absolute values</h4>
       <table role="data">
         <thead>
           <tr>
-            <th>Author</th>
-            <th>Commits</th>
-            <th>Subject limit</th>
-            <th>Subject capitalized</th>
-            <th>Subject no period</th>
-            <th>Subject in imperative</th>
-            <th>Body used</th>
-            <th>Body limit</th>
-            <th>Empty second line</th>
+            %= t th => $_ for qw(Author Commits), @TITLES;
           </tr>
         </thead>
         <tbody>
           % while (my ($email, $author) = each %$stats) {
-            % my $count = $author->{empty_second_line}{pass} + $author->{empty_second_line}{fail} + $author->{empty_second_line}{undef};
             <tr>
               %= t td => $email
-              %= t td => $count
-              %= t td => join '/', @{$author->{subject_limit}}{qw(pass fail undef)}
-              %= t td => join '/', @{$author->{capitalize_subject}}{qw(pass fail undef)}
-              %= t td => join '/', @{$author->{no_period_subject}}{qw(pass fail undef)}
-              %= t td => join '/', @{$author->{imperative_subject}}{qw(pass fail undef)}
-              %= t td => join '/', @{$author->{body_used}}{qw(pass fail undef)}
-              %= t td => join '/', @{$author->{body_limit}}{qw(pass fail undef)}
-              %= t td => join '/', @{$author->{empty_second_line}}{qw(pass fail undef)}
+              %= t td => get_count($author)
+              %= t td => join '/', @{$author->{$_}}{qw(pass fail undef)} for @RULES;
             </tr>
           % }
         </tbody>
       </table>
 
-      <h4>Percentages<h4>
+      <h4>Percentages</h4>
       <table role="data" class="sortable">
         <thead>
           <tr>
-            <th>Author</th>
-            <th>Commits</th>
-            <th>Subject limited</th>
-            <th>Subject capitalized</th>
-            <th>Subject no period</th>
-            <th>Subject imperative</th>
-            <th>Body used</th>
-            <th>Body limited</th>
-            <th>Body separated</th>
+            %= t th => $_ for qw(Author Commits), @TITLES;
           </tr>
         </thead>
         <tbody>
           % while (my ($email, $author) = each %$stats) {
-            % my $count = $author->{empty_second_line}{pass} + $author->{empty_second_line}{fail} + $author->{empty_second_line}{undef};
-            % continue if $count == 0;
+            % my $count = get_count($author) or next;
             <tr>
               %= t td => $email
               %= t td => $count
 
-              % my $subject_limit = $author->{subject_limit}{pass} / $count * 100;
-              %= t td => ('data-value' => $subject_limit) => sprintf '%.2f%%', $subject_limit
-
-              % my $capitalize_subject = $author->{capitalize_subject}{pass} / $count * 100;
-              %= t td => ('data-value' => $capitalize_subject) => sprintf '%.2f%%', $capitalize_subject
-
-              % my $no_period_subject = $author->{no_period_subject}{pass} / $count * 100;
-              %= t td => ('data-value' => $no_period_subject) => sprintf '%.2f%%', $no_period_subject
-
-              % my $imperative_subject = $author->{imperative_subject}{pass} / $count * 100;
-              %= t td => ('data-value' => $imperative_subject) => sprintf '%.2f%%', $imperative_subject
-
-              % my $body_used = $author->{body_used}{pass} / $count * 100;
-              %= t td => ('data-value' => $body_used) => sprintf '%.2f%%', $body_used
-
-              % if ($author->{body_used}{pass} > 0) {
-                % my $body_limit = $author->{body_limit}{pass} / $author->{body_used}{pass} * 100;
-                %= t td => ('data-value' => $body_limit) => sprintf '%.2f%%', $body_limit
-              % } else {
-                %= t td => ('data-value' => -1)  => '-'
-              % }
-
-              % if ($author->{body_used}{pass} > 0) {
-                % my $empty_second_line = $author->{empty_second_line}{pass} / $author->{body_used}{pass} * 100;
-                %= t td => ('data-value' => $empty_second_line) => sprintf '%.2f%%', $empty_second_line
-              % } else {
-                %= t td => ('data-value' => -1)  => '-'
+              % for (0 .. $#RULES) {
+                % if ($_ < @RULES - 2 || $author->{body_used}{pass} > 0) {
+                  % my $value = $author->{$RULES[$_]}{pass} / $count * 100;
+                  %= t td => ('data-value' => $value) => sprintf '%.2f%%', $value
+                % } else {
+                  %= t td => ('data-value' => -1)  => '-'
+                % }
               % }
             </tr>
           % }
