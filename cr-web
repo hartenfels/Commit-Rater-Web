@@ -1,12 +1,12 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite;
-use Mojo::JSON            qw(encode_json decode_json);
-use Mojo::Util            qw(slurp spurt);
 use Data::Dumper;
 use File::Path            qw(remove_tree);
 use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
 use Lock::File            qw(lockfile);
+use Mojo::JSON            qw(encode_json decode_json);
+use Mojo::Util            qw(slurp spurt);
 use lib                   qw(Commit-Rater);
 use CommitRater;
 
