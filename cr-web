@@ -11,6 +11,12 @@ use lib                   qw(Commit-Rater);
 use CommitRater;
 
 
+our %cfg = (
+    commit_limit => 10000,
+    eval { %{plugin 'Config'} }
+);
+
+
 plugin Minion => {File => 'minion.db'};
 
 app->minion->add_task(rate_commits => sub
@@ -22,7 +28,7 @@ app->minion->add_task(rate_commits => sub
     if (!-e $output)
     {
         my $repo  = CommitRater::Repo->new(remote => $remote);
-        my $stats = CommitRater->new(repo => $repo)->rate;
+        my $stats = CommitRater->new(repo => $repo)->rate($cfg{commit_limit});
         spurt encode_json($stats) => $output;
         remove_tree($repo->local);
     }
