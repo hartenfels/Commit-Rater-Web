@@ -2,8 +2,10 @@
 use Mojolicious::Lite;
 use Mojo::JSON            qw(encode_json decode_json);
 use Mojo::Util            qw(slurp spurt);
+use Data::Dumper;
 use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
+use Lock::File            qw(lockfile);
 use lib                   qw(Commit-Rater);
 use CommitRater;
 
@@ -13,6 +15,9 @@ plugin Minion => {File => 'minion.db'};
 app->minion->add_task(rate_commits => sub
 {
     my ($job, $remote, $output) = @_;
+
+    my $lock = lockfile("$output.lock", {blocking => 0, remove => 1}) or return;
+
     if (!-e $output)
     {
         my $stats = CommitRater->new($remote)->rate;
@@ -23,13 +28,14 @@ app->minion->add_task(rate_commits => sub
 
 sub load_stats
 {
-    my ($c, $user, $repo) = @_;
+    my ($c, $user, $repo, $no_job) = @_;
 
     my $file  = catfile 'stats', "$user.$repo.json";
     my $stats = eval { decode_json slurp $file };
 
-    if (!$stats)
+    if (!$stats && !$no_job)
     {
+        print Dumper($c->minion->backend->_jobs);
         $c->minion->enqueue(rate_commits => [
             "https://github.com/$user/$repo/",
             $file,
@@ -42,7 +48,7 @@ sub load_stats
 
 get '/' => sub { shift->render(template => 'index') };
 
-use Data::Dumper;
+
 get '/repo/:user/:repo' => sub
 {
     my $c = shift;
@@ -82,7 +88,7 @@ get '/res/repo/:user/:repo' => sub
             );
         }
 
-        if (load_stats($c, $user, $repo))
+        if (load_stats($c, $user, $repo, 1))
         {   $c->render(text => 'OK') }
         else
         {   $c->render(text => 'Fetching', status => 202) }

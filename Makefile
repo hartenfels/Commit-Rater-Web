@@ -7,8 +7,9 @@ install: public/components local Commit-Rater
 run-dev: public/components local
 	carton exec -- morbo cr-web
 
-worker-dev: local pull
-	carton exec -- ./cr-web minion worker -j 1
+worker-dev: local
+	mkdir -p stats
+	carton exec -- ./cr-web minion worker
 
 
 run-production: local

@@ -1,3 +1,4 @@
+requires 'Lock::File';
 requires 'IO::Socket::SSL';
 requires 'List::Util', '1.42';
 requires 'Mojolicious';

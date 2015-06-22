@@ -510,6 +510,51 @@ DISTRIBUTIONS
       IPC::Cmd 0
       XSLoader 0
       base 0
+  Lock-File-1.03
+    pathname: M/MM/MMCLERIC/Lock-File-1.03.tar.gz
+    provides:
+      Lock::File 1.03
+      Lock::File::Alarm 1.03
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      Fcntl 0
+      Log::Any 0
+      POSIX 0
+      base 0
+      strict 0
+      warnings 0
+  Log-Any-1.032
+    pathname: D/DA/DAGOLDEN/Log-Any-1.032.tar.gz
+    provides:
+      Log::Any 1.032
+      Log::Any::Adapter 1.032
+      Log::Any::Adapter::Base 1.032
+      Log::Any::Adapter::File 1.032
+      Log::Any::Adapter::Null 1.032
+      Log::Any::Adapter::Stderr 1.032
+      Log::Any::Adapter::Stdout 1.032
+      Log::Any::Adapter::Test 1.032
+      Log::Any::Adapter::Util 1.032
+      Log::Any::Manager 1.032
+      Log::Any::Proxy 1.032
+      Log::Any::Proxy::Test 1.032
+      Log::Any::Test 1.032
+    requirements:
+      B 0
+      Carp 0
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      IO::File 0
+      Test::Builder 0
+      base 0
+      constant 0
+      perl 5.008001
+      strict 0
+      warnings 0
   MRO-Compat-0.12
     pathname: B/BO/BOBTFISH/MRO-Compat-0.12.tar.gz
     provides:
