@@ -1,7 +1,7 @@
 all:
 	@echo Nothing to do for all
 
-install: public/components local Commit-Rater/local
+install: public/components local Commit-Rater
 
 
 run-dev: public/components local
@@ -18,28 +18,19 @@ stop-production:
 	carton exec -- hypnotoad -s cr-web
 
 
-stats: pull
-	mkdir -p stats
-	: $${user?} $${repo?} $${output?}
-	tmp=`mktemp` \
-	&& cd Commit-Rater \
-	&& carton exec ./commit-rater -r "https://git::@github.com/$$user/$$repo.git" \
-	                                  > "$$tmp" \
-	&& cd .. \
-	&& cp "$$tmp" "$$output"
-
-
 public/components: bower.json .bowerrc
 	bower install
 	touch public/components
+
+cpanfile: cpanfile.web Commit-Rater/cpanfile
+	cat $^ > cpanfile
 
 local: cpanfile
 	carton install
 	touch local
 
-Commit-Rater/local:
+Commit-Rater:
 	git submodule update --init --remote
-	cd Commit-Rater; make install
 
 
 clean:
@@ -51,4 +42,4 @@ realclean: clean
 	cd Commit-Rater; make realclean
 
 
-.PHONY: all install run-dev pull
+.PHONY: all install run-dev worker-dev run-production stop-production

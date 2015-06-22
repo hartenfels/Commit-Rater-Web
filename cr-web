@@ -1,18 +1,23 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite;
-use Mojo::JSON            qw(decode_json);
-use Mojo::Util            qw(slurp);
+use Mojo::JSON            qw(encode_json decode_json);
+use Mojo::Util            qw(slurp spurt);
 use File::Spec::Functions qw(catfile);
 use List::Util            qw(pairmap);
+use lib                   qw(Commit-Rater);
+use CommitRater;
 
 
 plugin Minion => {File => 'minion.db'};
 
 app->minion->add_task(rate_commits => sub
 {
-    my ($job, $args) = @_;
-    return if -e $args->{output};
-    system qw(make -s stats), pairmap { "$a=$b" } %$args;
+    my ($job, $remote, $output) = @_;
+    if (!-e $output)
+    {
+        my $stats = CommitRater->new($remote)->rate;
+        spurt encode_json($stats) => $output;
+    }
 });
 
 
@@ -25,11 +30,10 @@ sub load_stats
 
     if (!$stats)
     {
-        $c->minion->enqueue(rate_commits => [{
-            user   => $user,
-            repo   => $repo,
-            output => $file,
-        }]);
+        $c->minion->enqueue(rate_commits => [
+            "https://github.com/$user/$repo/",
+            $file,
+        ]);
     }
 
     return $stats;

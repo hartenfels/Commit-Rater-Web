@@ -4,3 +4,4 @@ minion.db
 .idea/
 .vagrant/
 public/components/
+__repos
