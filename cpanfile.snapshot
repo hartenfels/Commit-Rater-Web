@@ -45,6 +45,20 @@ DISTRIBUTIONS
       strict 0
       version 0.88
       warnings 0
+  CPAN-Meta-YAML-0.016
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-YAML-0.016.tar.gz
+    provides:
+      CPAN::Meta::YAML 0.016
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      Scalar::Util 0
+      perl 5.008001
+      strict 0
+      warnings 0
   Capture-Tiny-0.30
     pathname: D/DA/DAGOLDEN/Capture-Tiny-0.30.tar.gz
     provides:
@@ -98,10 +112,10 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  DBM-Deep-2.0012
-    pathname: R/RK/RKINYON/DBM-Deep-2.0012.tar.gz
+  DBM-Deep-2.0011
+    pathname: R/RK/RKINYON/DBM-Deep-2.0011.tar.gz
     provides:
-      DBM::Deep 2.0012
+      DBM::Deep 2.0011
       DBM::Deep::Array undef
       DBM::Deep::Engine undef
       DBM::Deep::Engine::DBI undef
@@ -159,7 +173,6 @@ DISTRIBUTIONS
       Devel::Cover::Annotation::Svk 1.18
       Devel::Cover::Branch 1.18
       Devel::Cover::Collection 1.18
-      Devel::Cover::Collection::Template::Provider 1.18
       Devel::Cover::Condition 1.18
       Devel::Cover::Condition_and_2 1.18
       Devel::Cover::Condition_and_3 1.18
@@ -168,38 +181,31 @@ DISTRIBUTIONS
       Devel::Cover::Condition_xor_4 1.18
       Devel::Cover::Criterion 1.18
       Devel::Cover::DB 1.18
-      Devel::Cover::DB::Criterion undef
       Devel::Cover::DB::Digests 1.18
       Devel::Cover::DB::File 1.18
       Devel::Cover::DB::IO 1.18
       Devel::Cover::DB::IO::JSON 1.18
       Devel::Cover::DB::IO::Sereal 1.18
       Devel::Cover::DB::IO::Storable 1.18
-      Devel::Cover::DB::Run 1.18
       Devel::Cover::DB::Structure 1.18
       Devel::Cover::Html_Common 1.18
-      Devel::Cover::Inc undef
       Devel::Cover::Op 1.18
       Devel::Cover::Pod 1.18
       Devel::Cover::Report::Compilation 1.18
       Devel::Cover::Report::Html 1.18
       Devel::Cover::Report::Html_basic 1.18
-      Devel::Cover::Report::Html_basic::Template::Provider 1.18
       Devel::Cover::Report::Html_minimal 1.18
       Devel::Cover::Report::Html_subtle 1.18
-      Devel::Cover::Report::Html_subtle::Template::Provider 1.18
       Devel::Cover::Report::Json 1.18
       Devel::Cover::Report::Sort 1.18
       Devel::Cover::Report::Text 1.18
       Devel::Cover::Report::Text2 1.18
       Devel::Cover::Report::Vim 1.18
-      Devel::Cover::Report::Vim::Template::Provider 1.18
       Devel::Cover::Statement 1.18
       Devel::Cover::Subroutine 1.18
       Devel::Cover::Test 1.18
       Devel::Cover::Time 1.18
       Devel::Cover::Truth_Table 1.18
-      Devel::Cover::Truth_Table::Row undef
       Devel::Cover::Util 1.18
       Devel::Cover::Web 1.18
     requirements:
@@ -339,6 +345,9 @@ DISTRIBUTIONS
       Git::Repository 1.314
       Git::Repository::Command 1.314
       Git::Repository::Plugin 1.314
+      Git::Repository::Plugin::Hello undef
+      Git::Repository::Plugin::Hello2 undef
+      MyGit::Hello undef
       Test::Git 1.314
     requirements:
       Carp 0
@@ -376,6 +385,14 @@ DISTRIBUTIONS
       HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
+  IO-Socket-IP-0.37
+    pathname: P/PE/PEVANS/IO-Socket-IP-0.37.tar.gz
+    provides:
+      IO::Socket::IP 0.37
+    requirements:
+      IO::Socket 0
+      Socket 1.97
+      Test::More 0.88
   IO-Socket-SSL-2.016
     pathname: S/SU/SULLR/IO-Socket-SSL-2.016.tar.gz
     provides:
@@ -390,17 +407,9 @@ DISTRIBUTIONS
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
+      Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
-  IO-Tty-1.12
-    pathname: T/TO/TODDR/IO-Tty-1.12.tar.gz
-    provides:
-      IO::Pty 1.12
-      IO::Tty 1.12
-      IO::Tty::Constant undef
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::More 0
   IPC-Run-0.94
     pathname: T/TO/TODDR/IPC-Run-0.94.tar.gz
     provides:
@@ -413,7 +422,6 @@ DISTRIBUTIONS
       IPC::Run::Win32Pump 0.90
     requirements:
       ExtUtils::MakeMaker 0
-      IO::Pty 1.08
       Test::More 0.47
   JSON-2.90
     pathname: M/MA/MAKAMAKA/JSON-2.90.tar.gz
@@ -588,29 +596,28 @@ DISTRIBUTIONS
       DBM::Deep 2.0011
       ExtUtils::MakeMaker 0
       Mojolicious 6.0
-      perl 5.010001
-  Module-Build-0.4214
-    pathname: L/LE/LEONT/Module-Build-0.4214.tar.gz
+  Module-Build-0.4212
+    pathname: L/LE/LEONT/Module-Build-0.4212.tar.gz
     provides:
-      Module::Build 0.4214
-      Module::Build::Base 0.4214
-      Module::Build::Compat 0.4214
-      Module::Build::Config 0.4214
-      Module::Build::Cookbook 0.4214
-      Module::Build::Dumper 0.4214
-      Module::Build::Notes 0.4214
-      Module::Build::PPMMaker 0.4214
-      Module::Build::Platform::Default 0.4214
-      Module::Build::Platform::MacOS 0.4214
-      Module::Build::Platform::Unix 0.4214
-      Module::Build::Platform::VMS 0.4214
-      Module::Build::Platform::VOS 0.4214
-      Module::Build::Platform::Windows 0.4214
-      Module::Build::Platform::aix 0.4214
-      Module::Build::Platform::cygwin 0.4214
-      Module::Build::Platform::darwin 0.4214
-      Module::Build::Platform::os2 0.4214
-      Module::Build::PodParser 0.4214
+      Module::Build 0.4212
+      Module::Build::Base 0.4212
+      Module::Build::Compat 0.4212
+      Module::Build::Config 0.4212
+      Module::Build::Cookbook 0.4212
+      Module::Build::Dumper 0.4212
+      Module::Build::Notes 0.4212
+      Module::Build::PPMMaker 0.4212
+      Module::Build::Platform::Default 0.4212
+      Module::Build::Platform::MacOS 0.4212
+      Module::Build::Platform::Unix 0.4212
+      Module::Build::Platform::VMS 0.4212
+      Module::Build::Platform::VOS 0.4212
+      Module::Build::Platform::Windows 0.4212
+      Module::Build::Platform::aix 0.4212
+      Module::Build::Platform::cygwin 0.4212
+      Module::Build::Platform::darwin 0.4212
+      Module::Build::Platform::os2 0.4212
+      Module::Build::PodParser 0.4212
     requirements:
       CPAN::Meta 2.142060
       CPAN::Meta::YAML 0.003
@@ -696,8 +703,8 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojolicious-6.12
-    pathname: D/DB/DBOOK/Mojolicious-6.12.tar.gz
+  Mojolicious-6.11
+    pathname: S/SR/SRI/Mojolicious-6.11.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -760,7 +767,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Server undef
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
-      Mojolicious 6.12
+      Mojolicious 6.11
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -770,7 +777,7 @@ DISTRIBUTIONS
       Mojolicious::Command::generate::app undef
       Mojolicious::Command::generate::lite_app undef
       Mojolicious::Command::generate::makefile undef
-      Mojolicious::Command::generate::plugin undef
+      Mojolicious::Command::generate::plugin 0.01
       Mojolicious::Command::get undef
       Mojolicious::Command::inflate undef
       Mojolicious::Command::prefork undef
@@ -811,13 +818,14 @@ DISTRIBUTIONS
       IO::Socket::IP 0.26
       Pod::Simple 3.09
       Time::Local 1.2
-      perl 5.010001
   Moose-2.1405
     pathname: E/ET/ETHER/Moose-2.1405.tar.gz
     provides:
       Class::MOP 2.1405
       Class::MOP::Attribute 2.1405
       Class::MOP::Class 2.1405
+      Class::MOP::Class::Immutable::Trait undef
+      Class::MOP::Deprecated undef
       Class::MOP::Instance 2.1405
       Class::MOP::Method 2.1405
       Class::MOP::Method::Accessor 2.1405
@@ -826,11 +834,18 @@ DISTRIBUTIONS
       Class::MOP::Method::Inlined 2.1405
       Class::MOP::Method::Meta 2.1405
       Class::MOP::Method::Wrapped 2.1405
+      Class::MOP::MiniTrait undef
+      Class::MOP::Mixin undef
+      Class::MOP::Mixin::AttributeCore undef
+      Class::MOP::Mixin::HasAttributes undef
+      Class::MOP::Mixin::HasMethods undef
+      Class::MOP::Mixin::HasOverloads undef
       Class::MOP::Module 2.1405
       Class::MOP::Object 2.1405
       Class::MOP::Overload 2.1405
       Class::MOP::Package 2.1405
       Moose 2.1405
+      Moose::Deprecated undef
       Moose::Exception 2.1405
       Moose::Exception::AccessorMustReadWrite 2.1405
       Moose::Exception::AddParameterizableTypeTakesParameterizableType 2.1405
@@ -1062,8 +1077,8 @@ DISTRIBUTIONS
       Moose::Exception::WrongTypeConstraintGiven 2.1405
       Moose::Exporter 2.1405
       Moose::Meta::Attribute 2.1405
-      Moose::Meta::Attribute::Custom::Moose 2.1405
       Moose::Meta::Attribute::Native 2.1405
+      Moose::Meta::Attribute::Native::Trait undef
       Moose::Meta::Attribute::Native::Trait::Array 2.1405
       Moose::Meta::Attribute::Native::Trait::Bool 2.1405
       Moose::Meta::Attribute::Native::Trait::Code 2.1405
@@ -1072,15 +1087,94 @@ DISTRIBUTIONS
       Moose::Meta::Attribute::Native::Trait::Number 2.1405
       Moose::Meta::Attribute::Native::Trait::String 2.1405
       Moose::Meta::Class 2.1405
+      Moose::Meta::Class::Immutable::Trait undef
       Moose::Meta::Instance 2.1405
       Moose::Meta::Method 2.1405
       Moose::Meta::Method::Accessor 2.1405
+      Moose::Meta::Method::Accessor::Native undef
+      Moose::Meta::Method::Accessor::Native::Array undef
+      Moose::Meta::Method::Accessor::Native::Array::Writer undef
+      Moose::Meta::Method::Accessor::Native::Array::accessor undef
+      Moose::Meta::Method::Accessor::Native::Array::clear undef
+      Moose::Meta::Method::Accessor::Native::Array::count undef
+      Moose::Meta::Method::Accessor::Native::Array::delete undef
+      Moose::Meta::Method::Accessor::Native::Array::elements undef
+      Moose::Meta::Method::Accessor::Native::Array::first undef
+      Moose::Meta::Method::Accessor::Native::Array::first_index undef
+      Moose::Meta::Method::Accessor::Native::Array::get undef
+      Moose::Meta::Method::Accessor::Native::Array::grep undef
+      Moose::Meta::Method::Accessor::Native::Array::insert undef
+      Moose::Meta::Method::Accessor::Native::Array::is_empty undef
+      Moose::Meta::Method::Accessor::Native::Array::join undef
+      Moose::Meta::Method::Accessor::Native::Array::map undef
+      Moose::Meta::Method::Accessor::Native::Array::natatime undef
+      Moose::Meta::Method::Accessor::Native::Array::pop undef
+      Moose::Meta::Method::Accessor::Native::Array::push undef
+      Moose::Meta::Method::Accessor::Native::Array::reduce undef
+      Moose::Meta::Method::Accessor::Native::Array::set undef
+      Moose::Meta::Method::Accessor::Native::Array::shallow_clone undef
+      Moose::Meta::Method::Accessor::Native::Array::shift undef
+      Moose::Meta::Method::Accessor::Native::Array::shuffle undef
+      Moose::Meta::Method::Accessor::Native::Array::sort undef
+      Moose::Meta::Method::Accessor::Native::Array::sort_in_place undef
+      Moose::Meta::Method::Accessor::Native::Array::splice undef
+      Moose::Meta::Method::Accessor::Native::Array::uniq undef
+      Moose::Meta::Method::Accessor::Native::Array::unshift undef
+      Moose::Meta::Method::Accessor::Native::Bool::not undef
+      Moose::Meta::Method::Accessor::Native::Bool::set undef
+      Moose::Meta::Method::Accessor::Native::Bool::toggle undef
+      Moose::Meta::Method::Accessor::Native::Bool::unset undef
+      Moose::Meta::Method::Accessor::Native::Code::execute undef
+      Moose::Meta::Method::Accessor::Native::Code::execute_method undef
+      Moose::Meta::Method::Accessor::Native::Collection undef
+      Moose::Meta::Method::Accessor::Native::Counter::Writer undef
+      Moose::Meta::Method::Accessor::Native::Counter::dec undef
+      Moose::Meta::Method::Accessor::Native::Counter::inc undef
+      Moose::Meta::Method::Accessor::Native::Counter::reset undef
+      Moose::Meta::Method::Accessor::Native::Counter::set undef
+      Moose::Meta::Method::Accessor::Native::Hash undef
+      Moose::Meta::Method::Accessor::Native::Hash::Writer undef
+      Moose::Meta::Method::Accessor::Native::Hash::accessor undef
+      Moose::Meta::Method::Accessor::Native::Hash::clear undef
+      Moose::Meta::Method::Accessor::Native::Hash::count undef
+      Moose::Meta::Method::Accessor::Native::Hash::defined undef
+      Moose::Meta::Method::Accessor::Native::Hash::delete undef
+      Moose::Meta::Method::Accessor::Native::Hash::elements undef
+      Moose::Meta::Method::Accessor::Native::Hash::exists undef
+      Moose::Meta::Method::Accessor::Native::Hash::get undef
+      Moose::Meta::Method::Accessor::Native::Hash::is_empty undef
+      Moose::Meta::Method::Accessor::Native::Hash::keys undef
+      Moose::Meta::Method::Accessor::Native::Hash::kv undef
+      Moose::Meta::Method::Accessor::Native::Hash::set undef
+      Moose::Meta::Method::Accessor::Native::Hash::shallow_clone undef
+      Moose::Meta::Method::Accessor::Native::Hash::values undef
+      Moose::Meta::Method::Accessor::Native::Number::abs undef
+      Moose::Meta::Method::Accessor::Native::Number::add undef
+      Moose::Meta::Method::Accessor::Native::Number::div undef
+      Moose::Meta::Method::Accessor::Native::Number::mod undef
+      Moose::Meta::Method::Accessor::Native::Number::mul undef
+      Moose::Meta::Method::Accessor::Native::Number::set undef
+      Moose::Meta::Method::Accessor::Native::Number::sub undef
+      Moose::Meta::Method::Accessor::Native::Reader undef
+      Moose::Meta::Method::Accessor::Native::String::append undef
+      Moose::Meta::Method::Accessor::Native::String::chomp undef
+      Moose::Meta::Method::Accessor::Native::String::chop undef
+      Moose::Meta::Method::Accessor::Native::String::clear undef
+      Moose::Meta::Method::Accessor::Native::String::inc undef
+      Moose::Meta::Method::Accessor::Native::String::length undef
+      Moose::Meta::Method::Accessor::Native::String::match undef
+      Moose::Meta::Method::Accessor::Native::String::prepend undef
+      Moose::Meta::Method::Accessor::Native::String::replace undef
+      Moose::Meta::Method::Accessor::Native::String::substr undef
+      Moose::Meta::Method::Accessor::Native::Writer undef
       Moose::Meta::Method::Augmented 2.1405
       Moose::Meta::Method::Constructor 2.1405
       Moose::Meta::Method::Delegation 2.1405
       Moose::Meta::Method::Destructor 2.1405
       Moose::Meta::Method::Meta 2.1405
       Moose::Meta::Method::Overridden 2.1405
+      Moose::Meta::Mixin::AttributeCore undef
+      Moose::Meta::Object::Trait undef
       Moose::Meta::Role 2.1405
       Moose::Meta::Role::Application 2.1405
       Moose::Meta::Role::Application::RoleSummation 2.1405
@@ -1108,6 +1202,7 @@ DISTRIBUTIONS
       Moose::Util 2.1405
       Moose::Util::MetaRole 2.1405
       Moose::Util::TypeConstraints 2.1405
+      Moose::Util::TypeConstraints::Builtins undef
       Test::Moose 2.1405
       metaclass 2.1405
       oose 2.1405
@@ -1142,6 +1237,14 @@ DISTRIBUTIONS
       parent 0.223
       strict 1.03
       warnings 1.03
+  Mozilla-CA-20141217
+    pathname: A/AB/ABH/Mozilla-CA-20141217.tar.gz
+    provides:
+      Mozilla::CA 20141217
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test 0
+      perl 5.006
   Net-SSLeay-1.69
     pathname: M/MI/MIKEM/Net-SSLeay-1.69.tar.gz
     provides:
@@ -1189,6 +1292,7 @@ DISTRIBUTIONS
   Package-Stash-XS-0.28
     pathname: D/DO/DOY/Package-Stash-XS-0.28.tar.gz
     provides:
+      CompileTime undef
       Package::Stash::XS 0.28
     requirements:
       ExtUtils::MakeMaker 6.30
@@ -1206,6 +1310,20 @@ DISTRIBUTIONS
       Scalar::Util 1.18
       Test::More 0.42
       perl 5.00503
+  Parse-CPAN-Meta-1.4417
+    pathname: D/DA/DAGOLDEN/Parse-CPAN-Meta-1.4417.tar.gz
+    provides:
+      Parse::CPAN::Meta 1.4417
+    requirements:
+      CPAN::Meta::YAML 0.011
+      Carp 0
+      Encode 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      File::Spec 0.80
+      JSON::PP 2.27200
+      perl 5.008001
+      strict 0
   Scalar-List-Utils-1.42
     pathname: P/PE/PEVANS/Scalar-List-Utils-1.42.tar.gz
     provides:
@@ -1233,6 +1351,13 @@ DISTRIBUTIONS
     provides:
       Sub::Exporter 0.987
       Sub::Exporter::Util 0.987
+      Test::SubExporter::DashSetup undef
+      Test::SubExporter::Faux undef
+      Test::SubExporter::GroupGen undef
+      Test::SubExporter::GroupGenSubclass undef
+      Test::SubExporter::ObjGen undef
+      Test::SubExporter::ObjGen::Obj undef
+      Test::SubExporter::s_e undef
     requirements:
       Carp 0
       Data::OptList 0.100
@@ -1318,10 +1443,10 @@ DISTRIBUTIONS
       Scalar::Util 1.14
       Test::More 0.42
       perl 5.005
-  Test-Deep-0.117
-    pathname: R/RJ/RJBS/Test-Deep-0.117.tar.gz
+  Test-Deep-0.115
+    pathname: R/RJ/RJBS/Test-Deep-0.115.tar.gz
     provides:
-      Test::Deep 0.117
+      Test::Deep 0.115
       Test::Deep::All undef
       Test::Deep::Any undef
       Test::Deep::Array undef
@@ -1401,6 +1526,60 @@ DISTRIBUTIONS
       perl 5.006001
       strict 0
       warnings 0
+  Test-Harness-3.35
+    pathname: L/LE/LEONT/Test-Harness-3.35.tar.gz
+    provides:
+      App::Prove 3.35
+      App::Prove::State 3.35
+      App::Prove::State::Result 3.35
+      App::Prove::State::Result::Test 3.35
+      Harness::Hook undef
+      TAP::Base 3.35
+      TAP::Formatter::Base 3.35
+      TAP::Formatter::Color 3.35
+      TAP::Formatter::Console 3.35
+      TAP::Formatter::Console::ParallelSession 3.35
+      TAP::Formatter::Console::Session 3.35
+      TAP::Formatter::File 3.35
+      TAP::Formatter::File::Session 3.35
+      TAP::Formatter::Session 3.35
+      TAP::Harness 3.35
+      TAP::Harness::Env 3.35
+      TAP::Object 3.35
+      TAP::Parser 3.35
+      TAP::Parser::Aggregator 3.35
+      TAP::Parser::Grammar 3.35
+      TAP::Parser::Iterator 3.35
+      TAP::Parser::Iterator::Array 3.35
+      TAP::Parser::Iterator::Process 3.35
+      TAP::Parser::Iterator::Stream 3.35
+      TAP::Parser::IteratorFactory 3.35
+      TAP::Parser::Multiplexer 3.35
+      TAP::Parser::Result 3.35
+      TAP::Parser::Result::Bailout 3.35
+      TAP::Parser::Result::Comment 3.35
+      TAP::Parser::Result::Plan 3.35
+      TAP::Parser::Result::Pragma 3.35
+      TAP::Parser::Result::Test 3.35
+      TAP::Parser::Result::Unknown 3.35
+      TAP::Parser::Result::Version 3.35
+      TAP::Parser::Result::YAML 3.35
+      TAP::Parser::ResultFactory 3.35
+      TAP::Parser::Scheduler 3.35
+      TAP::Parser::Scheduler::Job 3.35
+      TAP::Parser::Scheduler::Spinner 3.35
+      TAP::Parser::Source 3.35
+      TAP::Parser::SourceHandler 3.35
+      TAP::Parser::SourceHandler::Executable 3.35
+      TAP::Parser::SourceHandler::File 3.35
+      TAP::Parser::SourceHandler::Handle 3.35
+      TAP::Parser::SourceHandler::Perl 3.35
+      TAP::Parser::SourceHandler::RawTAP 3.35
+      TAP::Parser::YAMLish::Reader 3.35
+      TAP::Parser::YAMLish::Writer 3.35
+      Test::Harness 3.35
+    requirements:
+      ExtUtils::MakeMaker 0
   Test-Most-0.34
     pathname: O/OV/OVID/Test-Most-0.34.tar.gz
     provides:
