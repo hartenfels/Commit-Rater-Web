@@ -1,114 +1,17 @@
 % layout 'default';
 % use List::Util qw(sum);
 % use Mojo::JSON qw(j);
-%
-% our @RULES = qw(
-%   subject_limit
-%   capitalize_subject
-%   no_period_subject
-%   imperative_subject
-%   body_used
-%   body_limit
-%   empty_second_line
-% );
-%
-% our @TITLES = (
-%   'Subject limit',
-%   'Subject capitalized',
-%   'Subject no period',
-%   'Subject in imperative',
-%   'Body used',
-%   'Body limit',
-%   'Empty second line',
-% );
-%
-% sub get_count {
-%   my ($author) = @_;
-%   return sum @{$author->{$RULES[0]}}{qw(pass fail undef)};
-% }
+
+<script type="text/javascript">
+    stats = <%== j($stats) %>;
+</script>
 
 <div class="row">
   <br>
   %= t h2 => title
   % if (defined $stats) {
-      <h4>Absolute values</h4>
-      <table role="data">
-        <thead>
-          <tr>
-            %= t th => $_ for qw(Author Commits), @TITLES;
-          </tr>
-        </thead>
-        <tbody>
-          % while (my ($email, $author) = each %$stats) {
-            <tr>
-              %= t td => $email
-              %= t td => get_count($author)
-              %= t td => join '/', @{$author->{$_}}{qw(pass fail undef)} for @RULES;
-            </tr>
-          % }
-        </tbody>
-      </table>
-
-      <h4>Percentages</h4>
-      <table role="data" class="sortable">
-        <thead>
-          <tr>
-            %= t th => $_ for qw(Author Commits), @TITLES;
-          </tr>
-        </thead>
-        <tbody>
-          % while (my ($email, $author) = each %$stats) {
-            % my $count = get_count($author) or next;
-            <tr>
-              %= t td => $email
-              %= t td => $count
-
-              % for (0 .. $#RULES) {
-                % if ($_ < @RULES - 2 || $author->{body_used}{pass} > 0) {
-                  % my $value = $author->{$RULES[$_]}{pass} / $count * 100;
-                  %= t td => ('data-value' => $value) => sprintf '%.2f%%', $value
-                % } else {
-                  %= t td => ('data-value' => -1)  => '-'
-                % }
-              % }
-            </tr>
-          % }
-        </tbody>
-      </table>
-
-      <div class="row">
-        <div class="large-3 large-centered columns">
-          <canvas id="myChart" width="200" height="200"></canvas>
-        </div>
-      </div>
-      <script type="text/javascript">
-      $("document").ready(function(){
-        var ctx = $("#myChart").get(0).getContext("2d");
-
-        var data = [
-            {
-                value: 300,
-                color:"#F7464A",
-                highlight: "#FF5A5E",
-                label: "Red"
-            },
-            {
-                value: 50,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Green"
-            },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            }
-        ]
-        var myNewChart = new Chart(ctx).Pie(data, {animation : false});
-      });
-      </script>
-
+      <div id="stats-table"></div>
+      <script src="/js/table.js"></script>
   % } else {
     The worker is doing its thing. Respect the thing.
     <div id="pbw" class="progress">
