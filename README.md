@@ -6,14 +6,14 @@ We will call all the analysis data and rating and stuff of a developer just *sta
 
 ### `GET /res/repo/:user/:repo`
 
-Poll the status of `:user`'s Github repo `:repo`. Returns a status of `200` if the repo has been rated, `202` if it's still in the process of being rated and forwards whatever errors were encountered from Github.
+Poll the status of `:user`'s Github repo `:repo`. Returns a status of `200` and the stats if the repo has been rated, `202` if it's still in the process of being rated and forwards whatever errors were encountered from Github.
 
 ## Views
 
-```
-GET /?:size&:page # View a page of the global "leaderboard"
+``` Bash
+#GET /?:size&:page # View a page of the global "leaderboard"
 GET /repo/:user/:repo/ # View repo-leaderboard
-GET /repo/:repo/devs/:dev/ # View detailed stats for :dev in :repo
+#GET /repo/:repo/devs/:dev/ # View detailed stats for :dev in :repo
 ```
 
 Leaderboards only compare analysis fields that are factored into the rating and the rating itself. Clicking on a dev in a leaderboard shows the page with a detailed analysis, including unrated analysis fields, comparisons with the global average for some fields and suggestions for improvement.
