@@ -6,12 +6,19 @@
     stats = <%== j($stats) %>;
 </script>
 
-<div class="row">
+<div class="row" ng-app="repoViewer">
   <br>
   %= t h2 => title
   % if (defined $stats) {
       <div id="stats-table"></div>
-      <script src="/js/table.js"></script>
+      <div ng-controller="repoViewController as c">
+          <table ng-table>
+              <tr ng-repeat="user in stats">
+                  <td data-title="'Name'">{{user.name}}</td>
+              </tr>
+          </table>
+      </div>
+
   % } else {
     The worker is doing its thing. Respect the thing.
     <div id="pbw" class="progress">
