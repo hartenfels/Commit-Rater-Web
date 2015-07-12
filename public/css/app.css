@@ -38,3 +38,7 @@
 .secondary #pb {
   color: #222;
 }
+
+ #stats-table .text-center {
+   text-align: center;
+ }

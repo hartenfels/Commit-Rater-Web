@@ -6,117 +6,61 @@ app.filter('percentage', ['$filter', function ($filter) {
   };
 }]);
 
-app.controller('sortCtrl', ['$scope', function (scope) {
-  scope.users = [
-    {
-      "name"     : "turbopope",
-      "email"    : "PapstDonB@Googlemail.com",
-      "commits"  : 40,
-      "rating"   : 0.85,
-      "analysis" : {
-        "empty_second_line" : {
-          "passed"  : 29,
-          "fail"  : 2,
-          "undef" : 10
-        },
-        "subject_limit"     : {
-          "passed" : 29,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "capitalize_subject"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "no_period_subject"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "imperative_subject"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "body_limit"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "body_used"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        }
-      }
-    },
-    {
-      "name"     : "hartenfels",
-      "email"    : "hertenfels@Googlemail.com",
-      "commits"  : 42,
-      "rating"   : 0.85,
-      "analysis" : {
-        "empty_second_line" : {
-          "passed"  : 30,
-          "fail"  : 2,
-          "undef" : 10
-        },
-        "subject_limit"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "capitalize_subject"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "no_period_subject"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "imperative_subject"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "body_limit"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        },
-        "body_used"     : {
-          "passed" : 35,
-          "failed" : 7,
-          "undef"  : 0
-        }
-      }
-    }
-  ];
+app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
+  http.get("/res/repos/hartenfels/Commit-Rater").then(function(response) {
+      var raw_users = response.data;
+      scope.users = [];
 
-  for (var i = 0; i < scope.users.length; i++) {
-    scope.users[i].analysis.empty_second_line.rate
-        = scope.users[i].analysis.empty_second_line.passed
-        / scope.users[i].analysis.body_used.passed;
-    scope.users[i].analysis.subject_limit.rate
-        = scope.users[i].analysis.subject_limit.passed
-        / scope.users[i].commits;
-    scope.users[i].analysis.capitalize_subject.rate
-        = scope.users[i].analysis.capitalize_subject.passed
-        / scope.users[i].commits;
-    scope.users[i].analysis.no_period_subject.rate
-        = scope.users[i].analysis.no_period_subject.passed
-        / scope.users[i].commits;
-    scope.users[i].analysis.imperative_subject.rate
-        = scope.users[i].analysis.imperative_subject.passed
-        / scope.users[i].commits;
-    scope.users[i].analysis.body_limit.rate
-        = scope.users[i].analysis.body_limit.passed
-        / scope.users[i].analysis.body_used.passed;
-    scope.users[i].analysis.body_used.rate
-        = scope.users[i].analysis.body_used.passed
-        / scope.users[i].commits;
-  }
+      for (var username in raw_users) {
+        var user = {
+          "name": username
+        };
+
+        user.commits
+            = raw_users[username].subject_limit.pass
+            + raw_users[username].subject_limit.fail
+            + raw_users[username].subject_limit.undef
+        user.rating = 0.0;
+
+        user.subject_limit = raw_users[username].subject_limit;
+        user.subject_limit.rate
+            = user.subject_limit.pass
+            / user.commits;
+
+        user.capitalize_subject = raw_users[username].capitalize_subject;
+        user.capitalize_subject.rate
+            = user.capitalize_subject.pass
+            / user.commits;
+
+        user.no_period_subject = raw_users[username].no_period_subject;
+        user.no_period_subject.rate
+            = user.no_period_subject.pass
+            / user.commits;
+
+        user.imperative_subject = raw_users[username].imperative_subject;
+        user.imperative_subject.rate
+            = user.imperative_subject.pass
+            / user.commits;
+
+        user.body_used = raw_users[username].body_used;
+        user.body_used.rate
+            = user.body_used.pass
+            / user.commits;
+
+        user.body_limit = raw_users[username].body_limit;
+        user.body_limit.rate
+            = user.body_limit.pass
+            / user.body_used.pass;
+
+        user.empty_second_line = raw_users[username].empty_second_line;
+        user.empty_second_line.rate
+            = user.empty_second_line.pass
+            / user.body_used.pass;
+
+        scope.users.push(user);
+      }
+
+      console.dir(response.data);
+      console.dir(scope.users);
+  });
 }]);

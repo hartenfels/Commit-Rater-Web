@@ -10,20 +10,19 @@ stats = <%== j($stats) %>;
   <br>
   %= t h2 => title
   % if (defined $stats) {
-    <div id="stats-table"></div>
     <div ng-controller="sortCtrl">
-      <table st-table="users">
+      <table st-table="users" id="stats-table">
         <thead>
           <tr>
             <th st-sort="name">Author</th>
             <th st-sort="commits">#</th>
-            <th st-sort="analysis.subject_limit.passed">Subject limited</th>
-            <th st-sort="analysis.capitalize_subject.passed">Subject capitalized</th>
-            <th st-sort="analysis.no_period_subject.passed">Subject no period</th>
-            <th st-sort="analysis.imperative_subject.passed">Subject imperative</th>
-            <th st-sort="analysis.body_used.passed">Body used</th>
-            <th st-sort="analysis.empty_second_line.passed">Body separated</th>
-            <th st-sort="analysis.body_limit.passed">Body limited</th>
+            <th st-sort="subject_limit.rate">Subject limited</th>
+            <th st-sort="capitalize_subject.rate">Subject capitalized</th>
+            <th st-sort="no_period_subject.rate">Subject no period</th>
+            <th st-sort="imperative_subject.rate">Subject imperative</th>
+            <th st-sort="body_used.rate">Body used</th>
+            <th st-sort="empty_second_line.rate">Body separated</th>
+            <th st-sort="body_limit.rate">Body limited</th>
             <th st-sort="rating">Rating</th>
           </tr>
         </thead>
@@ -31,26 +30,26 @@ stats = <%== j($stats) %>;
           <tr ng-repeat="user in users">
             <td>{{user.name}}</td>
             <td>{{user.commits}}</td>
-            <td>
-              {{user.analysis.subject_limit.rate | percentage}} ({{user.analysis.subject_limit.passed}})
+            <td class="text-center">
+              {{user.subject_limit.rate | percentage}}<br>({{user.subject_limit.pass}})
             </td>
-            <td>
-              {{user.analysis.capitalize_subject.rate | percentage}} ({{user.analysis.capitalize_subject.passed}})
+            <td class="text-center">
+              {{user.capitalize_subject.rate | percentage}}<br>({{user.capitalize_subject.pass}})
             </td>
-            <td>
-              {{user.analysis.no_period_subject.rate | percentage}} ({{user.analysis.no_period_subject.passed}})
+            <td class="text-center">
+              {{user.no_period_subject.rate | percentage}}<br>({{user.no_period_subject.pass}})
             </td>
-            <td>
-              {{user.analysis.imperative_subject.rate | percentage}} ({{user.analysis.imperative_subject.passed}})
+            <td class="text-center">
+              {{user.imperative_subject.rate | percentage}}<br>({{user.imperative_subject.pass}})
             </td>
-            <td>
-              {{user.analysis.body_used.rate | percentage}} ({{user.analysis.body_used.passed}})
+            <td class="text-center">
+              {{user.body_used.rate | percentage}}<br>({{user.body_used.pass}})
             </td>
-            <td>
-              {{user.analysis.empty_second_line.rate | percentage}} ({{user.analysis.empty_second_line.passed}})
+            <td class="text-center">
+              {{user.empty_second_line.rate | percentage}}<br>({{user.empty_second_line.pass}})
             </td>
-            <td>
-              {{user.analysis.body_limit.rate | percentage}} ({{user.analysis.body_limit.passed}})
+            <td class="text-center">
+              {{user.body_limit.rate | percentage}}<br>({{user.body_limit.pass}})
             </td>
             <td>{{user.rating}}</td>
           </tr>
