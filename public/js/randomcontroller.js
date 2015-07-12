@@ -11,6 +11,8 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
   var repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
 
   http.get("/res/repos/" + repo).then(function(response) {
+      scope.threshold = 2;
+
       var raw_users = response.data;
       scope.users = [];
 

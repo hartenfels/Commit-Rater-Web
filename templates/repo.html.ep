@@ -7,6 +7,7 @@
   %= t h2 => title
   % if (defined $stats) {
     <div ng-controller="sortCtrl">
+      <input type="number" name="threshold" ng-model="threshold" min="1">
       <table st-table="users" st-safe-src="users_safe" id="stats-table">
         <thead>
           <tr>
@@ -23,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in users">
+          <tr ng-repeat="user in users" ng-if="user.commits > threshold">
             <td>{{user.name}}</td>
             <td>{{user.commits}}</td>
             <td class="text-center">
