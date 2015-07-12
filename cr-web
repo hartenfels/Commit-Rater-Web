@@ -91,15 +91,15 @@ get '/res/repo/:user/:repo' => sub
         if (!$tx->success)
         {
             return $c->render(
-                text   => 'Error from Github: ' . $tx->res->code,
+                json   => {github_error => $tx->res->code},
                 status => $tx->res->code,
             );
         }
 
-        if (load_stats($c, $user, $repo, 1))
-        {   $c->render(text => 'OK') }
+        if (my $stats = load_stats($c, $user, $repo, 1))
+        {   $c->render(json => $stats) }
         else
-        {   $c->render(text => 'Fetching', status => 202) }
+        {   $c->render(json => {}, status => 202) }
     });
 };
 
