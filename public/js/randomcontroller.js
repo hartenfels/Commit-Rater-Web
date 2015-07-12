@@ -20,7 +20,6 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
             = raw_users[username].subject_limit.pass
             + raw_users[username].subject_limit.fail
             + raw_users[username].subject_limit.undef
-        user.rating = 0.0;
 
         user.subject_limit = raw_users[username].subject_limit;
         user.subject_limit.rate
@@ -57,6 +56,18 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
             = user.empty_second_line.pass
             / user.body_used.pass;
 
+        user.rating = average([
+          user.empty_second_line.rate,
+          user.capitalize_subject.rate,
+          user.no_period_subject.rate,
+          user.imperative_subject.rate,
+          user.body_used.rate
+          ],
+          [
+            1, 1, 1, 1, 1, user.body_used.rate, user.body_used.rate
+          ]
+        );
+
         scope.users.push(user);
       }
 
@@ -64,3 +75,19 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
       console.dir(scope.users);
   });
 }]);
+
+function sum(numeric_array) {
+  var s = 0;
+  for(var i = 0; i < numeric_array.length; i++){
+    s += numeric_array[i];
+  }
+  return s;
+}
+
+function average(numeric_array, weights) {
+  var s = 0;
+  for(var i = 0; i < numeric_array.length; i++){
+    s += weights[i] * numeric_array[i];
+  }
+  return s / sum(weights);
+}

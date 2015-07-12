@@ -51,7 +51,7 @@ stats = <%== j($stats) %>;
             <td class="text-center">
               {{user.body_limit.rate | percentage}}<br>({{user.body_limit.pass}})
             </td>
-            <td>{{user.rating}}</td>
+            <td>{{user.rating | percentage}}</td>
           </tr>
         </tbody>
       </table>
