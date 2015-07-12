@@ -3,54 +3,54 @@
 % use Mojo::JSON qw(j);
 
 <script type="text/javascript">
-    stats = <%== j($stats) %>;
+stats = <%== j($stats) %>;
 </script>
 
 <div class="row" ng-app="app">
   <br>
   %= t h2 => title
   % if (defined $stats) {
-      <div id="stats-table"></div>
-      <div ng-controller="sortCtrl">
-          <table st-table="users">
-              <thead>
-                  <tr>
-                      <th st-sort="name">Author</th>
-                      <th st-sort="commits">#</th>
-                      <th st-sort="analysis.subject_limit.passed">Subject limited</th>
-                      <th st-sort="analysis.capitalize_subject.passed">Subject capitalized</th>
-                      <th st-sort="analysis.no_period_subject.passed">Subject no period</th>
-                      <th st-sort="analysis.imperative_subject.passed">Subject imperative</th>
-                      <th st-sort="analysis.body_used.passed">Body used</th>
-                      <th st-sort="analysis.empty_second_line.passed">Body separated</th>
-                      <th st-sort="analysis.body_limit.passed">Body limited</th>
-                      <th st-sort="rating">Rating</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr ng-repeat="user in users">
-                      <td>{{user.name}}</td>
-                      <td>{{user.commits}}</td>
-                      <td>{{user.analysis.subject_limit.passed}}</td>
-                      <td>{{user.analysis.capitalize_subject.passed}}</td>
-                      <td>{{user.analysis.no_period_subject.passed}}</td>
-                      <td>{{user.analysis.imperative_subject.passed}}</td>
-                      <td>{{user.analysis.body_used.passed}}</td>
-                      <td>{{user.analysis.empty_second_line.passed}}</td>
-                      <td>{{user.analysis.body_limit.passed}}</td>
-                      <td>{{user.rating}}</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-  % } else {
-    The worker is doing its thing. Respect the thing.
-    <div id="pbw" class="progress">
-      <span id="pb" class="meter custom" style="width: 0%"></span>
+    <div id="stats-table"></div>
+    <div ng-controller="sortCtrl">
+      <table st-table="users">
+        <thead>
+          <tr>
+            <th st-sort="name">Author</th>
+            <th st-sort="commits">#</th>
+            <th st-sort="analysis.subject_limit.passed">Subject limited</th>
+            <th st-sort="analysis.capitalize_subject.passed">Subject capitalized</th>
+            <th st-sort="analysis.no_period_subject.passed">Subject no period</th>
+            <th st-sort="analysis.imperative_subject.passed">Subject imperative</th>
+            <th st-sort="analysis.body_used.passed">Body used</th>
+            <th st-sort="analysis.empty_second_line.passed">Body separated</th>
+            <th st-sort="analysis.body_limit.passed">Body limited</th>
+            <th st-sort="rating">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <td>{{user.name}}</td>
+            <td>{{user.commits}}</td>
+            <td>{{user.analysis.subject_limit.passed}}</td>
+            <td>{{user.analysis.capitalize_subject.passed}}</td>
+            <td>{{user.analysis.no_period_subject.passed}}</td>
+            <td>{{user.analysis.imperative_subject.passed}}</td>
+            <td>{{user.analysis.body_used.passed}}</td>
+            <td>{{user.analysis.empty_second_line.passed}}</td>
+            <td>{{user.analysis.body_limit.passed}}</td>
+            <td>{{user.rating}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <script type="text/javascript">
+
+
+    % } else {
+      The worker is doing its thing. Respect the thing.
+      <div id="pbw" class="progress">
+        <span id="pb" class="meter custom" style="width: 0%"></span>
+      </div>
+      <script type="text/javascript">
       var parts = window.location.pathname.split('/');
       var repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
 
@@ -84,6 +84,6 @@
         });
       }
       poll();
-    </script>
-  % }
-</div>
+      </script>
+      % }
+    </div>
