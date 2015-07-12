@@ -7,11 +7,11 @@ app.filter('percentage', ['$filter', function ($filter) {
 }]);
 
 app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
+  scope.threshold = 2;
   var parts = window.location.pathname.split('/');
   var repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
 
   http.get("/res/repos/" + repo).then(function(response) {
-    scope.threshold = 2;
 
     var raw_users = response.data;
     scope.users = [];
