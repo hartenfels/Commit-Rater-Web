@@ -2,11 +2,11 @@
 % use List::Util qw(sum);
 % use Mojo::JSON qw(j);
 
-<div class="row" ng-app="app">
+<div class="row" ng-app="app" ng-controller="sortCtrl">
   <br>
-  %= t h2 => title
+  <a ng-href="https://github.com/{{repo}}"><h2>{{repo}}</h2></a>
   % if (defined $stats) {
-    <div ng-controller="sortCtrl">
+    <div>
       <div class="row">
         <div class="medium-2 columns">
           <label>#-Threshold
