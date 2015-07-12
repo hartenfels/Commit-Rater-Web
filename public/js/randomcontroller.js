@@ -74,6 +74,8 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
         scope.users.push(user);
       }
 
+      scope.users_safe = [].concat(scope.users);
+
       console.dir(response.data);
       console.dir(scope.users);
   });

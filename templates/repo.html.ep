@@ -7,7 +7,7 @@
   %= t h2 => title
   % if (defined $stats) {
     <div ng-controller="sortCtrl">
-      <table st-table="users" id="stats-table">
+      <table st-table="users" st-safe-src="users_safe" id="stats-table">
         <thead>
           <tr>
             <th st-sort="name">Author</th>
