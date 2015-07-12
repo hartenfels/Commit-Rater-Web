@@ -1,11 +1,94 @@
 angular.module('repoViewer', [])
   .controller('repoViewController', function() {
     var repoViewController = this;
+
+    // TODO: Fetch real data via http
     repoViewController.users = [
-      {name: "Moroni", age: 50},
-      {name: "Tiancum", age: 43},
-      {name: "Jacob", age: 27},
-      {name: "Nephi", age: 29},
-      {name: "Enos", age: 34}
+      {
+        "name"     : "turbopope",
+        "email"    : "PapstDonB@Googlemail.com",
+        "commits"  : 42,
+        "rating"   : 0.85,
+        "analysis" : {
+          "empty_second_line" : {
+            "passed"  : 30,
+            "fail"  : 2,
+            "undef" : 10
+          },
+          "subject_limit"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "capitalize_subject"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "no_period_subject"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "imperative_subject"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "body_limit"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "body_used"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          }
+        }
+      },
+      {
+        "name"     : "hartenfels",
+        "email"    : "hertenfels@Googlemail.com",
+        "commits"  : 42,
+        "rating"   : 0.85,
+        "analysis" : {
+          "empty_second_line" : {
+            "passed"  : 30,
+            "fail"  : 2,
+            "undef" : 10
+          },
+          "subject_limit"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "capitalize_subject"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "no_period_subject"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "imperative_subject"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "body_limit"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          },
+          "body_used"     : {
+            "passed" : 35,
+            "failed" : 7,
+            "undef"  : 0
+          }
+        }
+      }
     ];
   });

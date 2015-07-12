@@ -12,12 +12,34 @@
   % if (defined $stats) {
       <div id="stats-table"></div>
       <div ng-controller="repoViewController as c">
-          <table ng-table>
-              <tr ng-repeat="user in stats">
-                  <td data-title="'Name'">{{user.name}}</td>
-              </tr>
+          <table st-table="c.users">
+              <thead>
+                  <tr>
+                      <th>name</th>
+                      <th>empty_second_line</th>
+                      <th>subject_limit</th>
+                      <th>capitalize_subject</th>
+                      <th>no_period_subject</th>
+                      <th>imperative_subject</th>
+                      <th>body_used</th>
+                      <th>body_limit</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="user in c.users">
+                      <td>{{user.name}}</td>
+                      <td>{{user.analysis.empty_second_line.passed}}</td>
+                      <td>{{user.analysis.subject_limit.passed}}</td>
+                      <td>{{user.analysis.capitalize_subject.passed}}</td>
+                      <td>{{user.analysis.no_period_subject.passed}}</td>
+                      <td>{{user.analysis.imperative_subject.passed}}</td>
+                      <td>{{user.analysis.body_used.passed}}</td>
+                      <td>{{user.analysis.body_limit.passed}}</td>
+                  </tr>
+              </tbody>
           </table>
       </div>
+
 
   % } else {
     The worker is doing its thing. Respect the thing.
