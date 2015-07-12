@@ -31,13 +31,27 @@ stats = <%== j($stats) %>;
           <tr ng-repeat="user in users">
             <td>{{user.name}}</td>
             <td>{{user.commits}}</td>
-            <td>{{user.analysis.subject_limit.passed}}</td>
-            <td>{{user.analysis.capitalize_subject.passed}}</td>
-            <td>{{user.analysis.no_period_subject.passed}}</td>
-            <td>{{user.analysis.imperative_subject.passed}}</td>
-            <td>{{user.analysis.body_used.passed}}</td>
-            <td>{{user.analysis.empty_second_line.passed}}</td>
-            <td>{{user.analysis.body_limit.passed}}</td>
+            <td>
+              {{user.analysis.subject_limit.rate | percentage}} ({{user.analysis.subject_limit.passed}})
+            </td>
+            <td>
+              {{user.analysis.capitalize_subject.rate | percentage}} ({{user.analysis.capitalize_subject.passed}})
+            </td>
+            <td>
+              {{user.analysis.no_period_subject.rate | percentage}} ({{user.analysis.no_period_subject.passed}})
+            </td>
+            <td>
+              {{user.analysis.imperative_subject.rate | percentage}} ({{user.analysis.imperative_subject.passed}})
+            </td>
+            <td>
+              {{user.analysis.body_used.rate | percentage}} ({{user.analysis.body_used.passed}})
+            </td>
+            <td>
+              {{user.analysis.empty_second_line.rate | percentage}} ({{user.analysis.empty_second_line.passed}})
+            </td>
+            <td>
+              {{user.analysis.body_limit.rate | percentage}} ({{user.analysis.body_limit.passed}})
+            </td>
             <td>{{user.rating}}</td>
           </tr>
         </tbody>
