@@ -1,0 +1,6 @@
+<p>
+  Commit-Rater is a student-project by Carsten Hartenfels (hartenfels@uni-koblenz.de) and Marco Brack (mbrack@uni-koblenz.de) in the context of the Mining Software Repositories Course in the summer semester 2015.
+</p>
+<p>
+  Our original idea was mining Git repos and giving authors ratings based on some formal criteria for their commits. This website is a just-for-fun byproduct of our work, since we have shifted focus on finding relations between the criteria by using machine learning, but wanted to make our work publicly available.
+</p>
