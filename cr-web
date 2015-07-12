@@ -57,7 +57,7 @@ sub load_stats
 get '/' => sub { shift->render(template => 'index') };
 
 
-get '/repo/:user/:repo' => sub
+get '/repos/:user/:repo' => sub
 {
     my $c = shift;
     my ($user, $repo) = @{$c->stash}{'user', 'repo'};
@@ -79,7 +79,7 @@ get '/repo/:user/:repo' => sub
 };
 
 
-get '/res/repo/:user/:repo' => sub
+get '/res/repos/:user/:repo' => sub
 {
     my $c = shift;
     my ($user, $repo) = @{$c->stash}{'user', 'repo'};
