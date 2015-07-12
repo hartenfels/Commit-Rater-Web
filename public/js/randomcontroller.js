@@ -70,7 +70,7 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
       }
 
       user.rating = average([
-        user.empty_second_line.rate,
+        user.subject_limit.rate,
         user.capitalize_subject.rate,
         user.no_period_subject.rate,
         user.imperative_subject.rate,
