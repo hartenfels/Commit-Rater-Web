@@ -6,29 +6,29 @@
     stats = <%== j($stats) %>;
 </script>
 
-<div class="row" ng-app="repoViewer">
+<div class="row" ng-app="app">
   <br>
   %= t h2 => title
   % if (defined $stats) {
       <div id="stats-table"></div>
-      <div ng-controller="repoViewController as c">
-          <table st-table="c.users">
+      <div ng-controller="sortCtrl">
+          <table st-table="users">
               <thead>
                   <tr>
-                      <th>Author</th>
-                      <th>#</th>
-                      <th>Subject limited</th>
-                      <th>Subject capitalized</th>
-                      <th>Subject no period</th>
-                      <th>Subject imperative</th>
-                      <th>Body used</th>
-                      <th>Body separated</th>
-                      <th>Body limited</th>
-                      <th>Rating</th>
+                      <th st-sort="name">Author</th>
+                      <th st-sort="commits">#</th>
+                      <th st-sort="analysis.subject_limit.passed">Subject limited</th>
+                      <th st-sort="analysis.capitalize_subject.passed">Subject capitalized</th>
+                      <th st-sort="analysis.no_period_subject.passed">Subject no period</th>
+                      <th st-sort="analysis.imperative_subject.passed">Subject imperative</th>
+                      <th st-sort="analysis.body_used.passed">Body used</th>
+                      <th st-sort="analysis.empty_second_line.passed">Body separated</th>
+                      <th st-sort="analysis.body_limit.passed">Body limited</th>
+                      <th st-sort="rating">Rating</th>
                   </tr>
               </thead>
               <tbody>
-                  <tr ng-repeat="user in c.users">
+                  <tr ng-repeat="user in users">
                       <td>{{user.name}}</td>
                       <td>{{user.commits}}</td>
                       <td>{{user.analysis.subject_limit.passed}}</td>
