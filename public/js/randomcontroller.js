@@ -7,7 +7,7 @@ app.filter('percentage', ['$filter', function ($filter) {
 }]);
 
 app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
-  scope.threshold = 2;
+  scope.threshold = 5;
   var parts = window.location.pathname.split('/');
   scope.repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
   scope.repo_url = "https://github.com/" + scope.repo;

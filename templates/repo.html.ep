@@ -26,7 +26,7 @@
             <th st-sort="body_used.rate">Body used</th>
             <th st-sort="empty_second_line.rate">Body separated</th>
             <th st-sort="body_limit.rate">Body limited</th>
-            <th st-sort="rating">Rating</th>
+            <th st-sort="rating" st-sort-default="reverse">Rating</th>
           </tr>
         </thead>
         <tbody>
