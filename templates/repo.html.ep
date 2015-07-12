@@ -2,10 +2,6 @@
 % use List::Util qw(sum);
 % use Mojo::JSON qw(j);
 
-<script type="text/javascript">
-stats = <%== j($stats) %>;
-</script>
-
 <div class="row" ng-app="app">
   <br>
   %= t h2 => title
@@ -73,7 +69,7 @@ stats = <%== j($stats) %>;
         $("#pbw").toggleClass("secondary");
         $("#pb").text("checking");
 
-        $.ajax("/res/repo/" + repo, {
+        $.ajax("/res/repos/" + repo, {
           type: "GET",
           statusCode: {
             200: function(data) {
