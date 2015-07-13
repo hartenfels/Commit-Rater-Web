@@ -22,7 +22,7 @@
 
 <section class="search-repositories">
   <!-- Lol JavaScript -->
-  <form onsubmit="location.href='/repo/' + document.getElementById('repo-input').value; return false;">
+  <form onsubmit="location.href='/repos/' + document.getElementById('repo-input').value; return false;">
     <div class="row">
       <h2>Rate a repository:</h2>
       <br/>
