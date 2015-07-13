@@ -14,6 +14,7 @@
           </label>
         </div>
       </div>
+      <h3>Rules</h3>
       <table st-table="users" st-safe-src="users_safe" id="stats-table">
         <thead>
           <tr>
@@ -53,6 +54,44 @@
             </td>
             <td class="text-center">
               {{user.body_limit.rate | percentage}}<br>({{user.body_limit.pass}})
+            </td>
+            <td>{{user.rating | percentage}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Nonos</h3>
+      <table st-table="users" st-safe-src="users_safe" id="stats-table">
+        <thead>
+          <tr>
+            <th st-sort="name">Author</th>
+            <th st-sort="commits">#</th>
+            <th st-sort="no_short_message.rate">No short message</th>
+            <th st-sort="no_long_message.rate">No long message</th>
+            <th st-sort="no_bulk_change.rate">No bulk change</th>
+            <th st-sort="no_vulgarity.rate">No Vulgarity</th>
+            <th st-sort="no_misspelling.rate">No typos</th>
+            <th st-sort="rating" st-sort-default="reverse">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users" ng-if="user.commits > threshold">
+            <td>{{user.name}}</td>
+            <td>{{user.commits}}</td>
+            <td class="text-center">
+              {{user.no_short_message.rate | percentage}}<br>({{user.no_short_message.pass}})
+            </td>
+            <td class="text-center">
+              {{user.no_long_message.rate | percentage}}<br>({{user.no_long_message.pass}})
+            </td>
+            <td class="text-center">
+              {{user.no_bulk_change.rate | percentage}}<br>({{user.no_bulk_change.pass}})
+            </td>
+            <td class="text-center">
+              {{user.no_vulgarity.rate | percentage}}<br>({{user.no_vulgarity.pass}})
+            </td>
+            <td class="text-center">
+              {{user.no_misspelling.rate | percentage}}<br>({{user.no_misspelling.pass}})
             </td>
             <td>{{user.rating | percentage}}</td>
           </tr>
