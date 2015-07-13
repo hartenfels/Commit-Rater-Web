@@ -12,7 +12,7 @@
   <div class="row">
     <div class="medium-8 columns">
       <h1>Commit Rater</h1>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, this hero unit is totally not stolen from Foundation's website. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h4>
+      <h4>Enter a GitHub-Repo below and have your and your co-worker's commits rated against official guidelines and our inofficial nonos. You will also get an overall rating for all developers in both categories.</h4>
     </div>
     <div class="medium-4 columns hide-for-small">
       <img src="//avatars3.githubusercontent.com/u/3341028"/>
