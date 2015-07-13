@@ -14,6 +14,36 @@
           </label>
         </div>
       </div>
+      <h3>Summary</h3>
+      <table st-table="users" st-safe-src="users_safe" id="stats-table">
+        <thead>
+          <tr>
+            <th st-sort="name">Author</th>
+            <th st-sort="commits">#</th>
+            <th st-sort="verdict">Verdict</th>
+            <th st-sort="strength">Greatest strength</th>
+            <th st-sort="weakness">Greatest weakness</th>
+            <th st-sort="rating" st-sort-default="reverse">Overall Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users" ng-if="user.commits > threshold">
+            <td>{{user.name}}</td>
+            <td>{{user.commits}}</td>
+            <td>
+              {{user.verdict}}
+            </td>
+            <td>
+              {{user.strength}}
+            </td>
+            <td>
+              {{user.weakness}}
+            </td>
+            <td>{{user.rating | percentage}}</td>
+          </tr>
+        </tbody>
+      </table>
+
       <h3>Rules</h3>
       <table st-table="users" st-safe-src="users_safe" id="stats-table">
         <thead>
@@ -27,7 +57,7 @@
             <th st-sort="body_used.rate">Body used</th>
             <th st-sort="empty_second_line.rate">Body separated</th>
             <th st-sort="body_limit.rate">Body limited</th>
-            <th st-sort="rules_rating" st-sort-default="reverse">Rating</th>
+            <th st-sort="rules_rating" st-sort-default="reverse">Rules Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -72,7 +102,7 @@
             <th st-sort="no_vulgarity.rate">No Vulgarity</th>
             <th st-sort="no_misspelling.rate">No typos</th>
             <th st-sort="no_duplicate.rate">No duplicate messages</th>
-            <th st-sort="nono_rating" st-sort-default="reverse">Rating</th>
+            <th st-sort="nono_rating" st-sort-default="reverse">Nono Rating</th>
           </tr>
         </thead>
         <tbody>
