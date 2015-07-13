@@ -7,12 +7,14 @@ app.filter('percentage', ['$filter', function ($filter) {
 }]);
 
 app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
+
   scope.threshold = 5;
   var parts = window.location.pathname.split('/');
   scope.repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
   scope.repo_url = "https://github.com/" + scope.repo;
 
   http.get("/res/repos/" + scope.repo).then(function(response) {
+    console.dir(response.data);
 
     var raw_users = response.data;
     scope.users = [];
@@ -132,8 +134,6 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
     }
 
     scope.users_safe = [].concat(scope.users);
-
-    console.dir(response.data);
     console.dir(scope.users);
   });
 }]);
