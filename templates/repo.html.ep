@@ -27,7 +27,7 @@
             <th st-sort="body_used.rate">Body used</th>
             <th st-sort="empty_second_line.rate">Body separated</th>
             <th st-sort="body_limit.rate">Body limited</th>
-            <th st-sort="rating" st-sort-default="reverse">Rating</th>
+            <th st-sort="rules_rating" st-sort-default="reverse">Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +55,7 @@
             <td class="text-center">
               {{user.body_limit.rate | percentage}}<br>({{user.body_limit.pass}})
             </td>
-            <td>{{user.rating | percentage}}</td>
+            <td>{{user.rules_rating | percentage}}</td>
           </tr>
         </tbody>
       </table>
@@ -71,7 +71,8 @@
             <th st-sort="no_bulk_change.rate">No bulk change</th>
             <th st-sort="no_vulgarity.rate">No Vulgarity</th>
             <th st-sort="no_misspelling.rate">No typos</th>
-            <th st-sort="rating" st-sort-default="reverse">Rating</th>
+            <th st-sort="no_duplicate.rate">No duplicate messages</th>
+            <th st-sort="nono_rating" st-sort-default="reverse">Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -93,7 +94,10 @@
             <td class="text-center">
               {{user.no_misspelling.rate | percentage}}<br>({{user.no_misspelling.pass}})
             </td>
-            <td>{{user.rating | percentage}}</td>
+            <td class="text-center">
+              {{user.no_duplicate.rate | percentage}}<br>({{user.no_duplicate.pass}})
+            </td>
+            <td>{{user.nonos_rating | percentage}}</td>
           </tr>
         </tbody>
       </table>

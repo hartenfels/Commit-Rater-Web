@@ -27,6 +27,7 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
           + raw_users[username].subject_limit.fail
           + raw_users[username].subject_limit.undef
 
+      // Rules
       user.subject_limit = raw_users[username].subject_limit;
       user.subject_limit.rate
           = user.subject_limit.pass
@@ -70,7 +71,39 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
         user.empty_second_line.rate = 0;
       }
 
-      user.rating = average([
+      // Nonos
+      user.no_short_message = raw_users[username].no_short_message;
+      user.no_short_message.rate
+          = user.no_short_message.pass
+          / user.commits;
+
+      user.no_long_message = raw_users[username].no_long_message;
+      user.no_long_message.rate
+          = user.no_long_message.pass
+          / user.commits;
+
+      user.no_bulk_change = raw_users[username].no_bulk_change;
+      user.no_bulk_change.rate
+          = user.no_bulk_change.pass
+          / user.commits;
+
+      user.no_vulgarity = raw_users[username].no_vulgarity;
+      user.no_vulgarity.rate
+          = user.no_vulgarity.pass
+          / user.commits;
+
+      user.no_misspelling = raw_users[username].no_misspelling;
+      user.no_misspelling.rate
+          = user.no_misspelling.pass
+          / user.commits;
+
+      user.no_duplicate = raw_users[username].no_duplicate;
+      user.no_duplicate.rate
+          = user.no_duplicate.pass
+          / user.commits;
+
+      // Ratings
+      user.rules_rating = average([
         user.subject_limit.rate,
         user.capitalize_subject.rate,
         user.no_period_subject.rate,
@@ -81,6 +114,18 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
       ],
       [
         1, 1, 1, 1, 1, user.body_used.rate, user.body_used.rate
+      ]);
+
+      user.nonos_rating = average([
+        user.no_short_message.rate,
+        user.no_long_message.rate,
+        user.no_bulk_change.rate,
+        user.no_vulgarity.rate,
+        user.no_misspelling.rate,
+        user.no_duplicate.rate
+      ],
+      [
+        1, 1, 1, 1, 1, 1
       ]);
 
       scope.users.push(user);
