@@ -23,40 +23,40 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
       };
 
       user.commits
-      = raw_users[username].subject_limit.pass
-      + raw_users[username].subject_limit.fail
-      + raw_users[username].subject_limit.undef
+          = raw_users[username].subject_limit.pass
+          + raw_users[username].subject_limit.fail
+          + raw_users[username].subject_limit.undef
 
       user.subject_limit = raw_users[username].subject_limit;
       user.subject_limit.rate
-      = user.subject_limit.pass
-      / user.commits;
+          = user.subject_limit.pass
+          / user.commits;
 
       user.capitalize_subject = raw_users[username].capitalize_subject;
       user.capitalize_subject.rate
-      = user.capitalize_subject.pass
-      / user.commits;
+          = user.capitalize_subject.pass
+          / user.commits;
 
       user.no_period_subject = raw_users[username].no_period_subject;
       user.no_period_subject.rate
-      = user.no_period_subject.pass
-      / user.commits;
+          = user.no_period_subject.pass
+          / user.commits;
 
       user.imperative_subject = raw_users[username].imperative_subject;
       user.imperative_subject.rate
-      = user.imperative_subject.pass
-      / user.commits;
+          = user.imperative_subject.pass
+          / user.commits;
 
       user.body_used = raw_users[username].body_used;
       user.body_used.rate
-      = user.body_used.pass
-      / user.commits;
+          = user.body_used.pass
+          / user.commits;
 
       user.body_limit = raw_users[username].body_limit;
       if (user.body_used.pass > 0) {
         user.body_limit.rate
-        = user.body_limit.pass
-        / user.body_used.pass;
+            = user.body_limit.pass
+            / user.body_used.pass;
       } else {
         user.body_limit.rate = 0;
       }
@@ -64,8 +64,8 @@ app.controller('sortCtrl', ['$scope', '$http', function (scope, http) {
       user.empty_second_line = raw_users[username].empty_second_line;
       if (user.body_used.pass > 0) {
         user.empty_second_line.rate
-        = user.empty_second_line.pass
-        / user.body_used.pass;
+            = user.empty_second_line.pass
+            / user.body_used.pass;
       } else {
         user.empty_second_line.rate = 0;
       }
