@@ -20,7 +20,7 @@
   <script src="/components/angular/angular.min.js"></script>
   <script src="/components/angular-smart-table/dist/smart-table.js"></script>
 
-  <script src="/js/randomcontroller.js"></script>
+  <script src="/js/repocontroller.js"></script>
 </head>
 <body>
 
