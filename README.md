@@ -1,6 +1,9 @@
 # Commit Rater Web
 A website that shows the results of our [Commit Rater](https://github.com/hartenfels/Commit-Rater). Backend uses Mojolicious, frontend uses AngularJS.
 
+## Dependencies
+See dependencies of Commit-Rater submodule
+
 ## Routes
 We will call all the analysis data and rating and stuff of a developer just *stats* in the following.
 
