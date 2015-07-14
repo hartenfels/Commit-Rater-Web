@@ -144,8 +144,6 @@
       var repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
 
       function poll() {
-        console.log("bump");
-
         $("#pbw").toggleClass("secondary");
         $("#pb").text("checking");
 
@@ -153,21 +151,22 @@
           type: "GET",
           statusCode: {
             200: function(data) {
-              console.log("Worker job done. Reloading.");
               console.log(data);
               location.reload();
             },
             202: function(data) {
-              var delay = 30000;
+              var delay = 10000;
 
               console.log("Worker still busy. Trying again in " + delay + " ms");
-              console.log(data);
               setTimeout(poll, delay);
 
               $("#pbw").toggleClass("secondary");
               $("#pb").css("width", "0%");
               $("#pb").text("waiting");
               $("#pb").animate({width:"100%"}, delay, "linear");
+            },
+            404: function(data) {
+              console.error("Repo not found");
             }
           }
         });
