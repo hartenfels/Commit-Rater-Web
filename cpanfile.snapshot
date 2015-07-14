@@ -63,7 +63,7 @@ DISTRIBUTIONS
   Class-Data-Inheritable-0.08
     pathname: T/TM/TMTM/Class-Data-Inheritable-0.08.tar.gz
     provides:
-      Class::Data::Inheritable 0.08
+      Class::Data::Inheritable undef
     requirements:
       ExtUtils::MakeMaker 0
   Class-Load-0.22
@@ -373,7 +373,7 @@ DISTRIBUTIONS
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
     provides:
-      HTML::Tagset undef
+      HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
   IO-Socket-SSL-2.016
@@ -392,6 +392,15 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Net::SSLeay 1.46
       Scalar::Util 0
+  IO-Tty-1.12
+    pathname: T/TO/TODDR/IO-Tty-1.12.tar.gz
+    provides:
+      IO::Pty 1.12
+      IO::Tty 1.12
+      IO::Tty::Constant undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   IPC-Run-0.94
     pathname: T/TO/TODDR/IPC-Run-0.94.tar.gz
     provides:
@@ -404,6 +413,7 @@ DISTRIBUTIONS
       IPC::Run::Win32Pump 0.90
     requirements:
       ExtUtils::MakeMaker 0
+      IO::Pty 1.08
       Test::More 0.47
   JSON-2.90
     pathname: M/MA/MAKAMAKA/JSON-2.90.tar.gz
