@@ -63,18 +63,11 @@ get '/repos/:user/:repo' => sub
     my ($user, $repo) = @{$c->stash}{'user', 'repo'};
     $c->render_later;
 
-    $c->ua->head("https://github.com/$user/$repo/" => sub
-    {
-        my ($ua, $tx) = @_;
-        return $c->render(status => $tx->res->code) if not $tx->success;
-
-        $c->title("$user/$repo",
-            user  => $user,
-            repo  => $repo,
-            stats => load_stats($c, $user, $repo),
-        );
-        $c->render(template => 'repo');
-    });
+    $c->title("$user/$repo",
+        user  => $user,
+        repo  => $repo,
+    );
+    $c->render(template => 'repo');
 };
 
 
