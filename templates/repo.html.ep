@@ -4,174 +4,159 @@
 
 <div class="row" ng-app="app" ng-controller="sortCtrl">
   <br>
-  <a ng-href="https://github.com/{{repo}}"><h2>{{repo}}</h2></a>
-  % if (defined $stats) {
-    <div>
-      <div class="row">
-        <div class="medium-2 columns">
-          <label>#-Threshold
-            <input type="number" name="threshold" ng-model="threshold" min="1">
-          </label>
-        </div>
+  <div ng-if="status == 200">
+    <a ng-href="https://github.com/{{repo}}"><h2>{{repo}}</h2></a>
+    <div class="row">
+      <div class="medium-2 columns">
+        <label>#-Threshold
+          <input type="number" name="threshold" ng-model="threshold" min="1">
+        </label>
       </div>
-      <h3>Summary</h3>
-      <table st-table="users" st-safe-src="users_safe" id="stats-table">
-        <thead>
-          <tr>
-            <th st-sort="name">Author</th>
-            <th st-sort="commits">#</th>
-            <th st-sort="verdict">Verdict</th>
-            <th st-sort="strength">Greatest strength</th>
-            <th st-sort="weakness">Greatest weakness</th>
-            <th st-sort="rating" st-sort-default="reverse">Overall Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in users" ng-if="user.commits > threshold">
-            <td>{{user.name}}</td>
-            <td>{{user.commits}}</td>
-            <td>
-              {{user.verdict}}
-            </td>
-            <td>
-              {{user.strength}}
-            </td>
-            <td>
-              {{user.weakness}}
-            </td>
-            <td>{{user.rating | percentage}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Rules</h3>
-      <table st-table="users" st-safe-src="users_safe" id="stats-table">
-        <thead>
-          <tr>
-            <th st-sort="name">Author</th>
-            <th st-sort="commits">#</th>
-            <th st-sort="subject_limit.rate">Subject limited</th>
-            <th st-sort="capitalize_subject.rate">Subject capitalized</th>
-            <th st-sort="no_period_subject.rate">Subject no period</th>
-            <th st-sort="imperative_subject.rate">Subject imperative</th>
-            <th st-sort="body_used.rate">Body used</th>
-            <th st-sort="empty_second_line.rate">Body separated</th>
-            <th st-sort="body_limit.rate">Body limited</th>
-            <th st-sort="rules_rating" st-sort-default="reverse">Rules Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in users" ng-if="user.commits > threshold">
-            <td>{{user.name}}</td>
-            <td>{{user.commits}}</td>
-            <td class="text-center">
-              {{user.subject_limit.rate | percentage}}<br>({{user.subject_limit.pass}})
-            </td>
-            <td class="text-center">
-              {{user.capitalize_subject.rate | percentage}}<br>({{user.capitalize_subject.pass}})
-            </td>
-            <td class="text-center">
-              {{user.no_period_subject.rate | percentage}}<br>({{user.no_period_subject.pass}})
-            </td>
-            <td class="text-center">
-              {{user.imperative_subject.rate | percentage}}<br>({{user.imperative_subject.pass}})
-            </td>
-            <td class="text-center">
-              {{user.body_used.rate | percentage}}<br>({{user.body_used.pass}})
-            </td>
-            <td class="text-center">
-              {{user.empty_second_line.rate | percentage}}<br>({{user.empty_second_line.pass}})
-            </td>
-            <td class="text-center">
-              {{user.body_limit.rate | percentage}}<br>({{user.body_limit.pass}})
-            </td>
-            <td>{{user.rules_rating | percentage}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Nonos</h3>
-      <table st-table="users" st-safe-src="users_safe" id="stats-table">
-        <thead>
-          <tr>
-            <th st-sort="name">Author</th>
-            <th st-sort="commits">#</th>
-            <th st-sort="no_short_message.rate">No short message</th>
-            <th st-sort="no_long_message.rate">No long message</th>
-            <th st-sort="no_bulk_change.rate">No bulk change</th>
-            <th st-sort="no_vulgarity.rate">No Vulgarity</th>
-            <th st-sort="no_misspelling.rate">No typos</th>
-            <th st-sort="no_duplicate.rate">No duplicate messages</th>
-            <th st-sort="nono_rating" st-sort-default="reverse">Nono Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in users" ng-if="user.commits > threshold">
-            <td>{{user.name}}</td>
-            <td>{{user.commits}}</td>
-            <td class="text-center">
-              {{user.no_short_message.rate | percentage}}<br>({{user.no_short_message.pass}})
-            </td>
-            <td class="text-center">
-              {{user.no_long_message.rate | percentage}}<br>({{user.no_long_message.pass}})
-            </td>
-            <td class="text-center">
-              {{user.no_bulk_change.rate | percentage}}<br>({{user.no_bulk_change.pass}})
-            </td>
-            <td class="text-center">
-              {{user.no_vulgarity.rate | percentage}}<br>({{user.no_vulgarity.pass}})
-            </td>
-            <td class="text-center">
-              {{user.no_misspelling.rate | percentage}}<br>({{user.no_misspelling.pass}})
-            </td>
-            <td class="text-center">
-              {{user.no_duplicate.rate | percentage}}<br>({{user.no_duplicate.pass}})
-            </td>
-            <td>{{user.nonos_rating | percentage}}</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+    <h3>Summary</h3>
+    <table st-table="users" st-safe-src="users_safe" id="stats-table">
+      <thead>
+        <tr>
+          <th st-sort="name">Author</th>
+          <th st-sort="commits">#</th>
+          <th st-sort="verdict">Verdict</th>
+          <th st-sort="strength">Greatest strength</th>
+          <th st-sort="weakness">Greatest weakness</th>
+          <th st-sort="rating" st-sort-default="reverse">Overall Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users" ng-if="user.commits > threshold">
+          <td>{{user.name}}</td>
+          <td>{{user.commits}}</td>
+          <td>
+            {{user.verdict}}
+          </td>
+          <td>
+            {{user.strength}}
+          </td>
+          <td>
+            {{user.weakness}}
+          </td>
+          <td>{{user.rating | percentage}}</td>
+        </tr>
+      </tbody>
+    </table>
 
+    <h3>Rules</h3>
+    <table st-table="users" st-safe-src="users_safe" id="stats-table">
+      <thead>
+        <tr>
+          <th st-sort="name">Author</th>
+          <th st-sort="commits">#</th>
+          <th st-sort="subject_limit.rate">Subject limited</th>
+          <th st-sort="capitalize_subject.rate">Subject capitalized</th>
+          <th st-sort="no_period_subject.rate">Subject no period</th>
+          <th st-sort="imperative_subject.rate">Subject imperative</th>
+          <th st-sort="body_used.rate">Body used</th>
+          <th st-sort="empty_second_line.rate">Body separated</th>
+          <th st-sort="body_limit.rate">Body limited</th>
+          <th st-sort="rules_rating" st-sort-default="reverse">Rules Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users" ng-if="user.commits > threshold">
+          <td>{{user.name}}</td>
+          <td>{{user.commits}}</td>
+          <td class="text-center">
+            {{user.subject_limit.rate | percentage}}<br>({{user.subject_limit.pass}})
+          </td>
+          <td class="text-center">
+            {{user.capitalize_subject.rate | percentage}}<br>({{user.capitalize_subject.pass}})
+          </td>
+          <td class="text-center">
+            {{user.no_period_subject.rate | percentage}}<br>({{user.no_period_subject.pass}})
+          </td>
+          <td class="text-center">
+            {{user.imperative_subject.rate | percentage}}<br>({{user.imperative_subject.pass}})
+          </td>
+          <td class="text-center">
+            {{user.body_used.rate | percentage}}<br>({{user.body_used.pass}})
+          </td>
+          <td class="text-center">
+            {{user.empty_second_line.rate | percentage}}<br>({{user.empty_second_line.pass}})
+          </td>
+          <td class="text-center">
+            {{user.body_limit.rate | percentage}}<br>({{user.body_limit.pass}})
+          </td>
+          <td>{{user.rules_rating | percentage}}</td>
+        </tr>
+      </tbody>
+    </table>
 
-    % } else {
-      The worker is doing its thing. Respect the thing.
-      <div id="pbw" class="progress">
-        <span id="pb" class="meter custom" style="width: 0%"></span>
+    <h3>Nonos</h3>
+    <table st-table="users" st-safe-src="users_safe" id="stats-table">
+      <thead>
+        <tr>
+          <th st-sort="name">Author</th>
+          <th st-sort="commits">#</th>
+          <th st-sort="no_short_message.rate">No short message</th>
+          <th st-sort="no_long_message.rate">No long message</th>
+          <th st-sort="no_bulk_change.rate">No bulk change</th>
+          <th st-sort="no_vulgarity.rate">No Vulgarity</th>
+          <th st-sort="no_misspelling.rate">No typos</th>
+          <th st-sort="no_duplicate.rate">No duplicate messages</th>
+          <th st-sort="nono_rating" st-sort-default="reverse">Nono Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users" ng-if="user.commits > threshold">
+          <td>{{user.name}}</td>
+          <td>{{user.commits}}</td>
+          <td class="text-center">
+            {{user.no_short_message.rate | percentage}}<br>({{user.no_short_message.pass}})
+          </td>
+          <td class="text-center">
+            {{user.no_long_message.rate | percentage}}<br>({{user.no_long_message.pass}})
+          </td>
+          <td class="text-center">
+            {{user.no_bulk_change.rate | percentage}}<br>({{user.no_bulk_change.pass}})
+          </td>
+          <td class="text-center">
+            {{user.no_vulgarity.rate | percentage}}<br>({{user.no_vulgarity.pass}})
+          </td>
+          <td class="text-center">
+            {{user.no_misspelling.rate | percentage}}<br>({{user.no_misspelling.pass}})
+          </td>
+          <td class="text-center">
+            {{user.no_duplicate.rate | percentage}}<br>({{user.no_duplicate.pass}})
+          </td>
+          <td>{{user.nonos_rating | percentage}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-if="status == 202">
+    <div class="row">
+      <div class="small-6 small-centered columns text-center">
+        The worker is doing its thing. Respect the thing.
       </div>
-      <script type="text/javascript">
-      var parts = window.location.pathname.split('/');
-      var repo = parts[parts.length - 2] + "/" + parts[parts.length - 1];
-
-      function poll() {
-        $("#pbw").toggleClass("secondary");
-        $("#pb").text("checking");
-
-        $.ajax("/res/repos/" + repo, {
-          type: "GET",
-          statusCode: {
-            200: function(data) {
-              console.log(data);
-              location.reload();
-            },
-            202: function(data) {
-              var delay = 10000;
-
-              console.log("Worker still busy. Trying again in " + delay + " ms");
-              setTimeout(poll, delay);
-
-              $("#pbw").toggleClass("secondary");
-              $("#pb").css("width", "0%");
-              $("#pb").text("waiting");
-              $("#pb").animate({width:"100%"}, delay, "linear");
-            },
-            404: function(data) {
-              console.error("Repo not found");
-            }
-          }
-        });
-      }
-      poll();
-      </script>
-      % }
     </div>
+    <div class="row">
+      <div class="small-6 small-centered columns">
+        <img src="/img/Hypnotoad.gif"/>
+      </div>
+    </div>
+  </div>
+  <div ng-if="status != 200 && status != 202 && status != 0">
+    <div class="row">
+      <div class="small-6 small-centered columns text-center">
+        You dun goofed. Worker replied with status {{status}}.
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <pre style="font-family: monospace; background-color:#FAFAFA; padding-top: 16px;">
+        {{error_data}}
+      </pre>
+    </div>
+    <div class="row" style="position: fixed; bottom:0px; size: 30%; left: 35%">
+      <img src="/img/Hypnotoad404.png"/>
+    </div>
+  </div>
+</div>
