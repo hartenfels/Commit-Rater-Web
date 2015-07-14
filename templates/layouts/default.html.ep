@@ -39,7 +39,7 @@
         <li class="has-dropdown">
           <a href="/repos/hartenfels/Commit-Rater-Web">Rate <i>this</i> repo</a>
           <ul class="dropdown">
-            <li><a href="/repos/strongloop/expressb">Rate <i>strongloop/express</i></a></li>
+            <li><a href="/repos/strongloop/express">Rate <i>strongloop/express</i></a></li>
             <li><a href="/repos/FezVrasta/bootstrap-material-design">Rate <i>FezVrasta/bootstrap-material-design</i></a></li>
             <li><a href="/repos/kraih/mojo">Rate <i>kraih/mojo</i></a></li>
             <li><a href="/repos/hartenfels/Commit-Rater">Rate <i>hartenfels/Commit-Rater</i></a></li>
