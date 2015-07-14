@@ -57,11 +57,16 @@ sub load_stats
 get '/' => sub { shift->render(template => 'index') };
 
 
+my %poll;
+
+
 get '/repos/:user/:repo' => sub
 {
     my $c = shift;
     my ($user, $repo) = @{$c->stash}{'user', 'repo'};
     $c->render_later;
+
+    $poll{$user, $repo} = 1;
 
     $c->title("$user/$repo",
         user  => $user,
@@ -77,6 +82,8 @@ get '/res/repos/:user/:repo' => sub
     my ($user, $repo) = @{$c->stash}{'user', 'repo'};
     $c->render_later;
 
+    my $no_job = !delete $poll{$user, $repo};
+
     $c->ua->head("https://github.com/$user/$repo/" => sub
     {
         my ($ua, $tx) = @_;
@@ -88,7 +95,7 @@ get '/res/repos/:user/:repo' => sub
             );
         }
 
-        if (my $stats = load_stats($c, $user, $repo, 1))
+        if (my $stats = load_stats($c, $user, $repo, $no_job))
         {   $c->render(json => $stats) }
         else
         {   $c->render(json => {}, status => 202) }
