@@ -63,7 +63,7 @@ DISTRIBUTIONS
   Class-Data-Inheritable-0.08
     pathname: T/TM/TMTM/Class-Data-Inheritable-0.08.tar.gz
     provides:
-      Class::Data::Inheritable undef
+      Class::Data::Inheritable 0.08
     requirements:
       ExtUtils::MakeMaker 0
   Class-Load-0.22
@@ -373,7 +373,7 @@ DISTRIBUTIONS
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
     provides:
-      HTML::Tagset 3.20
+      HTML::Tagset undef
     requirements:
       ExtUtils::MakeMaker 0
   IO-Socket-SSL-2.016
@@ -588,7 +588,6 @@ DISTRIBUTIONS
       DBM::Deep 2.0011
       ExtUtils::MakeMaker 0
       Mojolicious 6.0
-      perl 5.010001
   Module-Build-0.4214
     pathname: L/LE/LEONT/Module-Build-0.4214.tar.gz
     provides:
@@ -811,7 +810,6 @@ DISTRIBUTIONS
       IO::Socket::IP 0.26
       Pod::Simple 3.09
       Time::Local 1.2
-      perl 5.010001
   Moose-2.1405
     pathname: E/ET/ETHER/Moose-2.1405.tar.gz
     provides:
