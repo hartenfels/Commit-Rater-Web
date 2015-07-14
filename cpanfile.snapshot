@@ -373,7 +373,7 @@ DISTRIBUTIONS
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
     provides:
-      HTML::Tagset undef
+      HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
   IO-Socket-SSL-2.016
@@ -392,6 +392,15 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Net::SSLeay 1.46
       Scalar::Util 0
+  IO-Tty-1.12
+    pathname: T/TO/TODDR/IO-Tty-1.12.tar.gz
+    provides:
+      IO::Pty 1.12
+      IO::Tty 1.12
+      IO::Tty::Constant undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   IPC-Run-0.94
     pathname: T/TO/TODDR/IPC-Run-0.94.tar.gz
     provides:
@@ -404,6 +413,7 @@ DISTRIBUTIONS
       IPC::Run::Win32Pump 0.90
     requirements:
       ExtUtils::MakeMaker 0
+      IO::Pty 1.08
       Test::More 0.47
   JSON-2.90
     pathname: M/MA/MAKAMAKA/JSON-2.90.tar.gz
@@ -578,6 +588,7 @@ DISTRIBUTIONS
       DBM::Deep 2.0011
       ExtUtils::MakeMaker 0
       Mojolicious 6.0
+      perl 5.010001
   Module-Build-0.4214
     pathname: L/LE/LEONT/Module-Build-0.4214.tar.gz
     provides:
@@ -800,6 +811,7 @@ DISTRIBUTIONS
       IO::Socket::IP 0.26
       Pod::Simple 3.09
       Time::Local 1.2
+      perl 5.010001
   Moose-2.1405
     pathname: E/ET/ETHER/Moose-2.1405.tar.gz
     provides:
