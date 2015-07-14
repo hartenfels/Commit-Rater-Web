@@ -66,8 +66,7 @@ get '/repos/:user/:repo' => sub
     $c->ua->head("https://github.com/$user/$repo/" => sub
     {
         my ($ua, $tx) = @_;
-        return $c->render(text => Dumper($tx)) if not $tx->success;
-        #return $c->render(status => $tx->res->code) if not $tx->success;
+        return $c->render(status => $tx->res->code) if not $tx->success;
 
         $c->title("$user/$repo",
             user  => $user,
