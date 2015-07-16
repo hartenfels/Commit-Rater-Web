@@ -19,7 +19,7 @@
         <tr>
           <th st-sort="name">Author</th>
           <th st-sort="commits">#</th>
-          <th st-sort="verdict">Verdict</th>
+          <th st-sort="verdict">Grade</th>
           <th st-sort="strength">Greatest strength</th>
           <th st-sort="weakness">Greatest weakness</th>
           <th st-sort="rating" st-sort-default="reverse">Overall Rating</th>

@@ -279,24 +279,34 @@ function getStrengthMessage(stat) {
 
 function getVerdict(rating) {
   if (rating < 0.1) {
-    return "Rock Bottom"
+    return "F"
   } else if (rating < 0.2) {
-    return "Stupid Git"
+    return "F+"
   } else if (rating < 0.3) {
-    return "Lowbob"
+    return "D-"
   } else if (rating < 0.4) {
-    return "SVN-Lover"
+    return "D"
+  } else if (rating < 0.45) {
+    return "D+"
   } else if (rating < 0.5) {
-    return "Mediocre"
+    return "C-"
+  } else if (rating < 0.55) {
+    return "C-"
   } else if (rating < 0.6) {
-    return "Has potential"
+    return "C"
+  } else if (rating < 0.65) {
+    return "C+"
   } else if (rating < 0.7) {
-    return "Good"
+    return "B-"
+  } else if (rating < 0.75) {
+    return "B"
   } else if (rating < 0.8) {
-    return "Git-Poweruser"
+    return "B+"
+  } else if (rating < 0.85) {
+    return "A-"
   } else if (rating < 0.9) {
-    return "Git-Superstart"
+    return "A"
   } else {
-    return "Linus Torvalds"
+    return "A+"
   }
 }
