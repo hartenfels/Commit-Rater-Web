@@ -134,7 +134,7 @@
   <div ng-if="status == 202">
     <div class="row">
       <div class="small-6 small-centered columns text-center">
-        The worker is doing its thing. Respect the thing.
+        Hypnotoad is scanning you commits. All hail the Hypnotoad.
       </div>
     </div>
     <div class="row">
