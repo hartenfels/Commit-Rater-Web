@@ -373,7 +373,7 @@ DISTRIBUTIONS
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
     provides:
-      HTML::Tagset undef
+      HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
   IO-Socket-SSL-2.016
