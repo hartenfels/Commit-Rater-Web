@@ -18,6 +18,10 @@ run-production: local
 stop-production:
 	carton exec -- hypnotoad -s cr-web
 
+worker-production: local
+	mkdir -p stats
+	nohup carton exec -- ./cr-web minion worker
+
 
 public/components: bower.json .bowerrc
 	bower install
